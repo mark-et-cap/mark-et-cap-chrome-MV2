@@ -13,7 +13,6 @@
     "storage", 
     "notifications",
     "tabs",
-    "webNavigation",
     "https://www.gstatic.com/firebasejs/8.3.0/firebase.js"
   ],
   "background": {
