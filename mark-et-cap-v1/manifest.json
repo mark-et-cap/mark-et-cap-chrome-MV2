@@ -7,8 +7,6 @@
     "contextMenus",
     "http://*/*",
     "https://*/*",
-    "clipboardWrite",
-    "clipboardRead",
     "activeTab",
     "storage", 
     "notifications",
