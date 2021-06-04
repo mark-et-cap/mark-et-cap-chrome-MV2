@@ -10,6 +10,10 @@ Some GIF examples:
   [Discord](https://imgur.com/QIVFwkU) 
 
   [Stocktwits](https://imgur.com/UsNzXZi) 
+  
+ ## Download the Extension/More Information
+  - Website: [https://www.mark-et-cap.com/](https://www.mark-et-cap.com/)
+  - Chrome Web Store: [https://chrome.google.com/webstore/detail/mark-et-cap/mopmpokmfchikmphegiccjnbddicaobk/](https://chrome.google.com/webstore/detail/mark-et-cap/mopmpokmfchikmphegiccjnbddicaobk/)
 
 ## Where we're going
 
@@ -19,10 +23,6 @@ We'd love to gather feedback and build for real-life use cases. Let us know what
   - Issues while using the extension
   - Enriched data
   - New features/settings/options
-
-## Download the Extension/More Information
-  - Website: [https://www.mark-et-cap.com/](https://www.mark-et-cap.com/)
-  - Chrome Web Store: [https://chrome.google.com/webstore/detail/mark-et-cap/mopmpokmfchikmphegiccjnbddicaobk/](https://chrome.google.com/webstore/detail/mark-et-cap/mopmpokmfchikmphegiccjnbddicaobk/)
 
 ## Get in touch
   - Email: [info@mark-et-cap.com](info@mark-et-cap.com)
