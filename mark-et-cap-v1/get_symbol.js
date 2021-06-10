@@ -12,7 +12,7 @@ let linkList = [
     "finviz.com",
     "swaggystocks.com",
     "stocktwits.com",
-    "www.benzinga.com", 
+    "www.benzinga.com",
     //crypto urls
     "www.coindesk.com",
     "cryptonews.com",
@@ -229,8 +229,8 @@ function benzingaSymbol(hoverHref) {
             chrome.runtime.sendMessage({content: symbolOver, message: "get_symbol"});
         }
     }
-};
-
+};      
+          
 // crypto linkList matches
 function coindeskSymbol(hoverHref) {
     if (hoverHref.includes("price")) {

@@ -34,6 +34,8 @@ function determineSResearch() {
                 break;
             case 'stocktwits': researchStocktwits();
                 break;
+            case 'tradingview': researchTradingView();
+                break;
         };
     });
 };
@@ -117,3 +119,9 @@ function researchStocktwits() {
     let rStocktwits = 'https://stocktwits.com/symbol/' + stockResearch;
     chrome.tabs.create({ url: rStocktwits });
 };
+
+function researchTradingView() {
+    recentInteraction(stockResearch);
+    let rTradingView = 'https://www.tradingview.com/symbols/' + stockResearch;
+    chrome.tabs.create({ url: rTradingView });
+}

@@ -30,6 +30,8 @@ function determineCResearch() {
                 break;
             case 'defipulse': researchDefiPulse();
                 break;
+            case 'ctradingview': cresearchTradingView();
+                break;
         };
     });
 };
@@ -161,4 +163,10 @@ function researchDefiPulse() {
             chrome.tabs.create({ url: cDefiPulse });
         }
     });
+};
+
+function cresearchTradingView() {
+    recentInteraction(cryptoResearch);
+    let cTradingView = 'https://www.tradingview.com/symbols/CRYPTOCAP-' + cryptoResearch;
+    chrome.tabs.create({ url: cTradingView });
 };

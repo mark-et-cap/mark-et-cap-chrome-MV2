@@ -15,7 +15,6 @@ let stockUrls = [
     "*://*.reddit.com/*",
     "*://*.discord.com/*",
     "*://*.youtube.com/*"
-
 ];
 
 let cryptoUrls = [

@@ -1,6 +1,6 @@
 {
   "name":  "mark et cap",
-  "version": "1.0",
+  "version": "1.1",
   "manifest_version": 2,
   "description": "Timing is everything! Use 'cashtags'($) to navigate to your trading platform/exchange or copy directly to clipboard!",
   "permissions": [
@@ -58,7 +58,7 @@
       "48": "icons/MEC-48.png",
       "128": "icons/MEC-128.png"
     },
-    "default_title": "Mark Et Cap Extension",
+    "default_title": "mark et cap - timing is everything",
     "default_popup": "popup/mec-popup.html"
   },
   "options_ui": {
