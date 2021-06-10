@@ -37,8 +37,7 @@
         "*://*.defipulse.com/*",
         "*://*.reddit.com/*",
         "*://*.discord.com/*",
-        "*://*.youtube.com/*",
-        "*://*.tradingview.com/*"
+        "*://*.youtube.com/*"
       ],
       "js": [
         "get_symbol.js"
@@ -59,7 +58,7 @@
       "48": "icons/MEC-48.png",
       "128": "icons/MEC-128.png"
     },
-    "default_title": "Mark Et Cap Extension",
+    "default_title": "mark et cap - timing is everything",
     "default_popup": "popup/mec-popup.html"
   },
   "options_ui": {
