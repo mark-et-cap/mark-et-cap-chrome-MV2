@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html style="width: 350px; border: 1px solid lightgray;">
+  <head>
+    <title>Mark Et Cap Options</title>
+    <img src="/icons/MEC-32.png"></img>
+  </head>
+  <body>
+    <br>
+    <b>Select Default Stock Brokerage:</b>
+    <select id="brokerage">
+      <option value="stockN/A">N/A</option>
+      <option value="robinhood">Robinhood</option>
+      <option value="sofi">Sofi</option>
+      <option value="webull">Webull</option>
+      <option value="tdameritrade">TDAmeritrade</option>
+      <option value="etrade">ETRADE</option>
+      <option value="charlesschwab">Charles Schwab</option>
+      <option value="merrilledge">Merrill Edge</option>
+      <option value="fidelity">Fidelity</option>
+    </select>
+<br>
+    <b>Select Default Crypto Exchange:</b>
+    <select id="exchange">
+      <option value="cryptoN/A">N/A</option>
+      <option value="binance">Binance</option>
+      <option value="coinbase">Coinbase</option>
+      <option value="gemini">Gemini</option>
+      <option value="robinhoodcrypto">Robinhood(Crypto)</option>
+      <option value="cex">Cex</option>
+      <option value="bitfinex">Bitfinex</option>
+      <option value="bittrex">Bittrex</option>
+      <option value="kraken">Kraken</option>
+      <option value="cryptocom">Crypto.com</option>
+      <option value="etoro">eToro</option>
+    </select>
+<br>
+    <b>Select Default Stock Research Site:</b>
+    <select id="stockResearch">
+      <option value="sresearchN/A">N/A</option>
+      <option value="stwitter">Twitter</option>
+      <option value="marketwatch">MarketWatch</option>
+      <option value="barchart">Barchart</option>
+      <option value="motleyfool">The Motley Fool</option>
+      <option value="yahoofinance">Yahoo Finance</option>
+      <option value="zackscom">Zacks.com</option>
+      <option value="finviz">Finviz</option>
+      <option value="sreddit">Reddit</option>
+      <option value="benzinga">Benzinga</option>
+      <option value="swaggystocks">SwaggyStocks</option>
+      <option value="stocktwits">Stocktwits</option>
+      <option value="tradingview">TradingView</option>
+    </select>
+<br>
+  <b>Select Default Crypto Research Site:</b>
+  <select id="cryptoResearch">
+    <option value="cresearchN/A">N/A</option>
+    <option value="ctwitter">Twitter</option>
+    <option value="coindesk">CoinDesk</option>
+    <option value="cryptonews">cryptonews.com</option>
+    <option value="coingecko">CoinGecko</option>
+    <option value="cyahoofinance">Yahoo Finance</option>
+    <option value="coinmarketcap">CoinMarketCap</option>
+    <option value="creddit">Reddit</option>
+    <option value="blockfolio">Blockfolio</option>
+    <option value="defipulse">DeFiPulse</option>
+    <option value="ctradingview">TradingView</option>
+  </select>
+<br>
+  <label for="copy" class="css-checkvox"><b>Enable Copy to Clipboard</b></label>
+  <input type="checkbox"  id="copy" class="css-checkbox"/>
+<br>
+<br>
+  <div id="status"></div>
+  <button id="save">Save</button>
+
+<script src="options_save.js"></script>
+
+</body>
+</html>
