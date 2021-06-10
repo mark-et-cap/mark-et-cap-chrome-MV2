@@ -235,7 +235,7 @@ function benzingaSymbol(hoverHref) {
 function coindeskSymbol(hoverHref) {
     if (hoverHref.includes("price")) {
         let coindeskSplit = hoverHref.split('/');
-        let symbolOver = coindeskSplit[coindeskSplit.-1];
+        let symbolOver = coindeskSplit[coindeskSplit.length -1];
         chrome.runtime.sendMessage({content: symbolOver, message: "find_crypto_ticker"}, function(response) {
             let symbolTicker = response.dbResponse
             chrome.runtime.sendMessage({content: symbolTicker, message: "get_symbol"});
