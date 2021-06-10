@@ -14,8 +14,7 @@ let stockUrls = [
     "*://*.benzinga.com/quote/*",
     "*://*.reddit.com/*",
     "*://*.discord.com/*",
-    "*://*.youtube.com/*",
-    "*://*.tradingview.com/*"
+    "*://*.youtube.com/*"
 ];
 
 let cryptoUrls = [
@@ -30,8 +29,7 @@ let cryptoUrls = [
     "*://*.gemini.com/*",
     "*://*.reddit.com/*",
     "*://*.discord.com/*",
-    "*://*.youtube.com/*",
-    "*://*.tradingview.com/*"
+    "*://*.youtube.com/*"
 ];
 
 //creates copy, stock brokerage and crypto exchange context menu items
