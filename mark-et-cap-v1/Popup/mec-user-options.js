@@ -156,6 +156,10 @@ function switchSResearch(userPopupSResearch) {
             const rStocktwits = 'https://stocktwits.com/symbol/'
             popupSResearch(rStocktwits, '', "Stocktwits");
                 break;
+        case 'tradingview':
+            const rTradingView = 'https://www.tradingview.com/symbols/'
+            popupSResearch(rTradingView, '', "TradingView");
+                break;
     }
 };
 
@@ -203,8 +207,11 @@ function switchCResearch(userPopupCResearch) {
             const cDefiPulse = 'https://defipulse.com/';
             popupCResearch(cDefiPulse, '', "DefiPulse");        
                 break;
+       case 'ctradingview':
+            const cTradingView = 'https://www.tradingview.com/symbols/CRYPTOCAP-';
+            popupCResearch(cTradingView, '', "TradingView");
+                break;
     }
-    
 };
 
 function popupCopy(){
