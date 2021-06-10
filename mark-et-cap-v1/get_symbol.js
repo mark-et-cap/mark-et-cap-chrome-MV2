@@ -13,7 +13,6 @@ let linkList = [
     "swaggystocks.com",
     "stocktwits.com",
     "www.benzinga.com",
-    "tradingview.com",
     //crypto urls
     "www.coindesk.com",
     "cryptonews.com",
@@ -28,48 +27,7 @@ let selectionList = [
     "www.youtube.com"
 ];
 
-let currencyPairs = [
-    "USDT",
-    "BTC",
-    "ETH",
-    "USD",
-    "PERP",
-    "USDC",
-    "NOK",
-    "SEK",
-    "GBP",
-    "DKK",
-    "ZAR",
-    "HUF",
-    "MXN",
-    "CZK",
-    "AUD",
-    "CAD",
-    "NZD",
-    "CHF",
-    "RON",
-    "TRY",
-    "RUB",
-    "SGD",
-    "ILS",
-    "BYN",
-    "JPY",
-    "BYN",
-    "UST",
-    "EUR",
-    "TUSD",
-    "DAI",
-    "BUSD",
-    "KRW",
-    "USDPERP",
-    "USDTPERP",
-    "PAX",
-    "BRL",
-    "MXN",
-    "NGN",
-    "UAH",
-    "USDJ"
-];
+
 
 function getUserFocusDomain(focusDomain) { 
     if (linkList.includes(focusDomain) && typeof focusDomain !== undefined) {
@@ -124,8 +82,6 @@ function updateLinkMenus(focusDomain) {
                     case "blockfolio.com": blockfolioSymbol(hoverHref);
                         break;
                     case "defipulse.com": defipulseSymbol(hoverHref);
-                        break;
-                    case "tradingview.com": tradingviewSymbol(hoverHref);
                         break;
                 }
             }
@@ -273,24 +229,8 @@ function benzingaSymbol(hoverHref) {
             chrome.runtime.sendMessage({content: symbolOver, message: "get_symbol"});
         }
     }
-};
-
-function tradingviewSymbol(hoverHref) {
-       if(hoverHref.includes("/symbol/") && hoverHref.includes("-")) {
-           let symbolOver = hoverHref.split('-').pop().split('/')[0].replace(/\W+/g, '');
-            //need to check length for further spliting to obtain symbol (specifically for crypto and paired currency)
-           if(symbolOver.length>=5) {
-                
-           chrome.runtime.sendMessage({content: symbolOver, message: "get_symbol"});
-       } else {
-           if(hoverHref.includes("markets/cryptocurrencies") {
-              let symbolOver = hoverHref.split('-').pop().split('/')[0].replace(/\W+/g, '');
-            }
-       }
-};
-           
-           
-
+};      
+          
 // crypto linkList matches
 function coindeskSymbol(hoverHref) {
     if (hoverHref.includes("price")) {
