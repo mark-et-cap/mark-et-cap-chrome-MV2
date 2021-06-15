@@ -98,7 +98,7 @@ function researchfinviz() {
 
 function researchReddit() {
     recentInteraction(stockResearch);
-    let rReddit = 'https://www.reddit.com/search/?q=%24' + stockResearch;
+    let rReddit = 'https://www.reddit.com/r/MillennialBets/wiki/index/stocks/' + stockResearch;
     chrome.tabs.create({ url: rReddit });
 };
 
