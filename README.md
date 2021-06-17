@@ -18,7 +18,8 @@ Some GIF examples:
 ## Where we're going
 
 We'd love to gather feedback and build for real-life use cases. Let us know what you'd like to see, what you'd improve on and what's not working. We'd love to intergate with a financial API to give near-realtime price quotes within the browser pop-up menu (to start)!
-  ### Such as
+  
+### Request new features such as:
   - New supported sites
   - Issues while using the extension
   - Enriched data
