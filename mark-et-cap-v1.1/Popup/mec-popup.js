@@ -258,3 +258,13 @@ chrome.storage.onChanged.addListener(function(changes, namespace) {
     }
   }
 });
+
+document.addEventListener("mouseup", function(e) {
+  let theHamburgToggleCheck = document.getElementById('hamburg-toggle');
+  let theHamburgMenuCheck = document.getElementById('hamburg-menu');
+  if (theHamburgToggleCheck.className == "on") {
+    if(e.target != theHamburgMenuCheck) {
+      theHamburgToggleCheck.removeAttribute("class", "on");
+    }
+  }
+});
