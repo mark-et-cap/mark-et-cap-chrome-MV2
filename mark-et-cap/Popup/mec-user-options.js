@@ -145,8 +145,12 @@ function switchSResearch(userPopupSResearch) {
             popupSResearch(rFinviz, '', "Finviz");
                 break;
         case 'sreddit': 
-            const rReddit = 'https://www.reddit.com/search/?q=%24';
+            const rReddit = 'https://www.reddit.com/r/MillennialBets/wiki/index/stocks/';
             popupSResearch(rReddit, '', "Reddit");
+                break;
+        case 'benzinga':
+             const rBenzinga = 'https://www.benzinga.com/quote/';
+             popupSResearch(rBenzinga, '', "Benzinga");
                 break;
         case 'swaggystocks':
             const rSwaggy = 'https://swaggystocks.com/dashboard/stocks/';

@@ -229,7 +229,6 @@ nav.hamburg{
 #hamburg-toggle.on + #hamburg-menu {
     opacity: 1;
     visibility: visible;
-    z-index: 1;
     border: 1px solid lightgray;
 }
 
@@ -250,7 +249,8 @@ nav.hamburg{
     box-shadow: 0 1px 8px rgba(0,0,0,0.05);
     opacity: 0;
     visibility: hidden;
-    transition: opacity .4s; 
+    transition: opacity .4s;
+    z-index: 100;
   }
 
   #hamburg-menu:after {
