@@ -20,20 +20,11 @@ let linkList = [
     
 ];
 
-//selection/highlight sites
-let selectionList = [
-    "www.reddit.com",
-    "discord.com",
-    "www.youtube.com"
-];
-
-
-
 function getUserFocusDomain(focusDomain) { 
     if (linkList.includes(focusDomain) && typeof focusDomain !== undefined) {
         updateLinkMenus(focusDomain);
         chrome.runtime.sendMessage({message: "switch_link"});
-    } else if (selectionList.includes(focusDomain) && typeof focusDomain !== "undefined") {
+    } else if (focusDomain !== "undefined") {
         updateSelectionMenus();
         chrome.runtime.sendMessage({message: "switch_selection"});
     } else {
@@ -89,7 +80,7 @@ function updateLinkMenus(focusDomain) {
     });
 };
 
-//selectionList matches
+//non-link matches
 function updateSelectionMenus() {
     document.addEventListener('mouseup', function () {
         let userSelection = window.getSelection().toString().replace(/\W+/g, '');
