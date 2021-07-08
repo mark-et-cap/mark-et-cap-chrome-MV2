@@ -76,6 +76,14 @@ let createAllMenus = () => {
         "onclick": determineCResearch,
         "targetUrlPatterns": cryptoUrls
     });
+    
+    chrome.contextMenus.create({
+        "id": "searchAll",
+        "title": "Search all sites...",
+        "contexts": ["link"],
+        "onclick": allSitesSearch, 
+        "targetUrlPatterns": [].concat(stockUrls, cryptoUrls)
+    });
 };
 
 //Gets user preferences preferences and sends parameters to the createAllMenus function
