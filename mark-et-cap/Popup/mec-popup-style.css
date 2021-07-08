@@ -14,7 +14,7 @@ body{
     max-height: 450px;
     grid-template-rows: 50px 370px 30px;
     grid-template-areas:
-       "header header header header header"
+        "header header header header header"
         "body body body body body"
         "footer footer footer footer footer";
 }
@@ -25,6 +25,7 @@ body{
     text-align: left;
     display: grid;
     border-top: 2px solid darkgrey;
+    width: 350px;
     grid-area: body;
     grid-template-rows: 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px;
     grid-template-areas:
@@ -89,6 +90,7 @@ body{
 .body-search::-webkit-scrollbar{
     display: none;
 }
+
 
 /* Nav sections */
 nav{
@@ -155,7 +157,7 @@ nav.searchHeader{
 nav.hamburg{
     display: flex;
     grid-area: hamburg;
-    grid-column: 4 / 5;
+    grid-column: 5 / 6;
     grid-row: inherit;
     justify-content: space-between;
     font-size: 0;
@@ -197,6 +199,7 @@ nav.hamburg{
     top: 32px;
     left: 247px;
 }
+
 
 /* hamburg menu */
 #hamburg-toggle{
@@ -665,6 +668,7 @@ nav.hamburg{
       content: "\2212";
   }
 
+
 /* Footer */
 footer{
     grid-area: footer;
@@ -717,4 +721,5 @@ footer{
     padding-right: 3px;
     color: inherit;
 }
+
 
