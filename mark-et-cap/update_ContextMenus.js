@@ -19,6 +19,9 @@ chrome.runtime.onMessage.addListener(
             chrome.contextMenus.update("cResearchMenu", {
                 "contexts": ["link"]
             });
+            chrome.contextMenus.update("searchAll", {
+                "contexts": ["link"]
+            });
         } else {
             if (request.message =="switch_selection") {
                 chrome.contextMenus.update("copyMenu", {
@@ -34,6 +37,9 @@ chrome.runtime.onMessage.addListener(
                     "contexts": ["selection"]
                 });
                 chrome.contextMenus.update("cResearchMenu", {
+                    "contexts": ["selection"]
+                });
+                chrome.contextMenus.update("searchAll", {
                     "contexts": ["selection"]
                 });
             }
