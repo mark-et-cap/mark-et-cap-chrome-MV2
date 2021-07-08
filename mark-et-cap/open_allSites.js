@@ -10,8 +10,9 @@ chrome.runtime.onMessage.addListener(
 
 function allSitesSearch() { 
     let screenWidth = window.screen.availWidth - 175;
+    let extensionVersion = chrome.runtime.id;
     recentInteraction(allSitesSymbol);
-    window.open('chrome-extension://lohldigbkedbcdcdmhobgffllmgkoekm/popup/mec-popup.html', "extension_popup", `top=67px,left=${screenWidth}px,width=385px,height=489px,status=no,scrollbars=no,resizable=no,titlebar=no`);
+    window.open(`chrome-extension://${extensionVersion}/popup/mec-popup.html`, "extension_popup", `top=67px,left=${screenWidth}px,width=385px,height=489px,status=no,scrollbars=no,resizable=no,titlebar=no`);
     setTimeout(function(){
         chrome.runtime.sendMessage({
             content: allSitesSymbol.toUpperCase(), 
