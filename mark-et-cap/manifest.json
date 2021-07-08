@@ -2,7 +2,7 @@
   "name":  "mark et cap",
   "version": "1.3",
   "manifest_version": 2,
-  "description": "Timing is everything! Use 'cashtags'($) to navigate to your trading platform/exchange or copy directly to clipboard!",
+  "description": "Timing is everything! Use 'cashtags' or tickers to navigate to your trading platform/exchange of choice!",
   "permissions": [
     "contextMenus",
     "http://*/*",
