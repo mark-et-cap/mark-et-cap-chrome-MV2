@@ -118,6 +118,9 @@ chrome.runtime.onMessage.addListener(
                     });
                 }        
             });
+            chrome.contextMenus.update("searchAll", {
+                "visible": true
+            });
         } else if (request.message == "get_selection") {
             chrome.storage.sync.get(["enableCopy"], function(copy) {
                 userCopy = copy.enableCopy;
@@ -188,6 +191,9 @@ chrome.runtime.onMessage.addListener(
                     });
                 }        
             });
+            chrome.contextMenus.update("searchAll", {
+                "visible": true
+            });
         } else {
             if (request.message == "other_selection") {
                 chrome.contextMenus.update("copyMenu", {
@@ -203,6 +209,9 @@ chrome.runtime.onMessage.addListener(
                     "visible": false
                 });
                 chrome.contextMenus.update("cResearchMenu", {
+                    "visible": false
+                });
+                 chrome.contextMenus.update("searchAll", {
                     "visible": false
                 });
             }
