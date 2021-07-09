@@ -1,7 +1,7 @@
 ## Welcome
 We're @mark-et-cap - We're creating a browser extension that allows traders of stock and crypto to navigate directly from a ticker they've encountered on the web, directly to their preferred online stock brokerage, cryptocurrency exchange or research site. 
 
-The extension works in the context of all webpages by highlighting the text of a stock or cryptocurrency ticker; certain sites have been optimized to allow users to simply right-click a URL rather than having to highlight - Twitter and Stocktwits are two examples of these types of 'smart' sites. 
+The extension works in the context of all webpages by highlighting the text of a stock or cryptocurrency ticker then right-clicking to open the context menu; certain sites have been optimized to allow users to simply right-click a URL rather than having to highlight - Twitter and Stocktwits are two examples of these types of 'smart' sites. 
 
 Some GIF examples:
 
@@ -34,3 +34,6 @@ We'd love to gather feedback and build for real-life use cases. Let us know what
   - Reddit: [/u/mark_et_cap](https://www.reddit.com/user/mark_et_cap)
   - Patreon: [https://www.patreon.com/mark_et_cap](https://www.patreon.com/mark_et_cap) 
     *Patreons will have the option to vote on upcoming changes (though anyone can suggest them!)
+    
+ ## Important note
+  - commits containing references to v1.3 actually refer to v2.0.0 - after the commit it was determined that the changes go beyond a simple update and warrant a version change
