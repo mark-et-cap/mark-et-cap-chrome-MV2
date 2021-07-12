@@ -196,7 +196,7 @@ function switchCResearch(userPopupCResearch) {
             popupCResearch(cYahoo, cYahooSuffix, "Yahoo(Crypto)");
                 break;
         case 'coinmarketcap': 
-            const cCoinMarketCap = 'https://www.coindesk.com/price/';
+            const cCoinMarketCap = 'https://coinmarketcap.com/currencies/';
             popupCResearch(cCoinMarketCap, '', "CoinMarketCap");
                 break;
         case 'blockfolio': 
