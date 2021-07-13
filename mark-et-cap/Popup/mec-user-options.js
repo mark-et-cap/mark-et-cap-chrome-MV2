@@ -128,7 +128,7 @@ function switchSResearch(userPopupSResearch) {
             const rBarchart = 'https://www.barchart.com/stocks/quotes/';
             popupSResearch(rBarchart, '', "Barchart");
                 break;
-        //need to update here 
+        //handled in the firebase call to get exchange info
         case 'motleyfool':
             popupSResearch('', '', "MotleyFool");
                 break;
@@ -157,11 +157,11 @@ function switchSResearch(userPopupSResearch) {
             popupSResearch(rSwaggy, '', "SwaggyStocks");
                 break;
         case 'stocktwits': 
-            const rStocktwits = 'https://stocktwits.com/symbol/'
+            const rStocktwits = 'https://stocktwits.com/symbol/';
             popupSResearch(rStocktwits, '', "Stocktwits");
                 break;
         case 'tradingview':
-            const rTradingView = 'https://www.tradingview.com/symbols/'
+            const rTradingView = 'https://www.tradingview.com/symbols/';
             popupSResearch(rTradingView, '', "TradingView");
                 break;
     }
@@ -196,7 +196,7 @@ function switchCResearch(userPopupCResearch) {
             popupCResearch(cYahoo, cYahooSuffix, "Yahoo(Crypto)");
                 break;
         case 'coinmarketcap': 
-            const cCoinMarketCap = 'https://www.coindesk.com/price/';
+            const cCoinMarketCap = 'https://coinmarketcap.com/currencies/';
             popupCResearch(cCoinMarketCap, '', "CoinMarketCap");
                 break;
         case 'blockfolio': 

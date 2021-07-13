@@ -88,7 +88,6 @@ chrome.runtime.onMessage.addListener(
           if(snapshot.exists()) {
             let cryptoRObj = snapshot.val();
             let cryptoRTranslation = cryptoRObj.ticker_url_translation;
-            console.log(cryptoRTranslation);
             if(cryptoRTranslation !== "") {
               sendResponse({dbResponse: cryptoRTranslation});
             } else {

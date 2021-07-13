@@ -1,8 +1,8 @@
 {
   "name":  "mark et cap",
-  "version": "1.2",
+  "version": "2.0.0",
   "manifest_version": 2,
-  "description": "Timing is everything! Use 'cashtags'($) to navigate to your trading platform/exchange or copy directly to clipboard!",
+  "description": "Timing is everything! Use 'cashtags' or tickers to navigate to your trading platform/exchange of choice!",
   "permissions": [
     "contextMenus",
     "http://*/*",
@@ -19,25 +19,7 @@
   "content_scripts": [
     {
       "matches": [
-        "*://*.twitter.com/*", 
-        "*://*.marketwatch.com/*", 
-        "*://*.barchart.com/*",
-        "*://*.fool.com/*",
-        "*://finance.yahoo.com/*",
-        "*://*.zacks.com/*", 
-        "*://*.finviz.com/*",
-        "*://*.swaggystocks.com/*",
-        "*://*.stocktwits.com/*", 
-        "*://*.benzinga.com/*",
-        "*://*.coindesk.com/*",
-        "*://*.cryptonews.com/*",
-        "*://*.coingecko.com/*",
-        "*://*.coinmarketcap.com/*",
-        "*://*.blockfolio.com/*",
-        "*://*.defipulse.com/*",
-        "*://*.reddit.com/*",
-        "*://*.discord.com/*",
-        "*://*.youtube.com/*"
+        "<all_urls>"
       ],
       "js": [
         "get_symbol.js"

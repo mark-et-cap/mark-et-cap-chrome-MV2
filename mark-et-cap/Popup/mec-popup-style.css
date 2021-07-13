@@ -14,9 +14,9 @@ body{
     max-height: 450px;
     grid-template-rows: 50px 370px 30px;
     grid-template-areas:
-        "header header header header"
-        "body body body body"
-        "footer footer footer footer";
+        "header header header header header"
+        "body body body body body"
+        "footer footer footer footer footer";
 }
 
 /* Body section */
@@ -25,6 +25,7 @@ body{
     text-align: left;
     display: grid;
     border-top: 2px solid darkgrey;
+    width: 350px;
     grid-area: body;
     grid-template-rows: 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px;
     grid-template-areas:
@@ -78,6 +79,18 @@ body{
     display:none;
 }
 
+.body-search{
+    overflow-y: scroll;
+    text-align: left;
+    display: none;
+    border-top: 2px solid darkgrey;
+    grid-area: body;
+}
+
+.body-search::-webkit-scrollbar{
+    display: none;
+}
+
 
 /* Nav sections */
 nav{
@@ -85,9 +98,9 @@ nav{
     background: white;
     grid-area: header;
     place-items: center;
-    grid-template-columns: 41px 100px 100px 41px;
+    grid-template-columns: 41px 67px 66px 67px 41px;
     grid-template-areas:
-    "logo recent favorites-page hamburg";
+    "logo recent favorites-page search hamburg";
 }
 
 nav.img{
@@ -95,7 +108,7 @@ nav.img{
     grid-area: logo;
     grid-column: 1 / 2;
     grid-row: inherit;
-    padding-left: 9px;
+    padding-left: 8px;
     padding-top: 4px;
     align-items: center;
     justify-content: left;
@@ -108,11 +121,11 @@ nav.recentHeader{
     grid-row: inherit;
     font-family: sans-serif;
     font-size: 8pt;
-    padding-top: 8px;
+    padding-top: 6px;
+    padding-left: -1px;
     align-items: center;
     justify-content: left;
-    padding-left: 10px;
-    margin-left: 20px;
+    margin-left: 12px;
 }
 
 nav.favorites{
@@ -124,14 +137,27 @@ nav.favorites{
     justify-content: center;
     border-radius: 50%;
     padding-top: 15px;
-    padding-bottom: 10px;
-    margin-left: 35px;
+    padding-bottom: 12px;
+    padding-left: 7px;
+}
+
+nav.searchHeader{
+    display: flex;
+    grid-area: search;
+    grid-column: 4 / 5;
+    grid-row: inherit;
+    font-family: sans-serif;
+    font-size: 8pt;
+    padding-top: 8px;
+    padding-bottom: 1px;
+    justify-content: flex-end;
+    padding-right: 8px;
 }
 
 nav.hamburg{
     display: flex;
     grid-area: hamburg;
-    grid-column: 4 / 5;
+    grid-column: 5 / 6;
     grid-row: inherit;
     justify-content: space-between;
     font-size: 0;
@@ -141,7 +167,7 @@ nav.hamburg{
 #menu-spanner{
     display: flex;
     position: absolute;
-    width: 24px;
+    width: 25px;
     height: 1px;
     text-align: center;
     transition: all .25s ease-in-out;
@@ -154,17 +180,24 @@ nav.hamburg{
     backface-visibility: hidden;
     border-radius: 2px;
     text-align: right;
-    width: 20px; 
+    width: 21px; 
 }
 
 #menu-spanner.recent-on {
     top: 32px;
-    left: 112px;
+    left: 88px;
+    width: 24px;
 }
 
 #menu-spanner.favorite-on {
     top: 32px;
-    left: 230px;
+    left: 169px;
+    width: 26px;
+}
+
+#menu-spanner.search-on {
+    top: 32px;
+    left: 247px;
 }
 
 
@@ -545,6 +578,97 @@ nav.hamburg{
     color: rgb(25, 53, 61);
 }
 
+/* Search Page */
+.searchbar{
+    position: relative;
+    display: flex;
+    max-width: 128px;
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-bottom: 3px;
+}
+
+.search-icon {
+    background-color: transparent;
+    position: absolute;
+    top: 9px;
+    left: 10px;
+    width: 16px;
+}
+
+.search-clear {
+    position: absolute;
+    top: 10px;
+    right: 8px;
+    width: 14px;
+    cursor: pointer;
+    visibility: hidden;
+}
+.searchTerm {
+    border: 1px solid grey;
+    border-radius: 5px;
+    height: 20px;
+    width: 100%;
+    padding: 0px 23px 2px 25px;
+    outline: 0;
+    background-color: #f7f7f7;
+}
+
+.searchTerm input[type=text] {
+    font-size: 14px;
+    color: #1b95e0;
+}
+
+.searchTerm:hover, .searchTerm:focus {
+    border: 1px solid #009688;
+    background-color: white;
+  }
+
+  .brokerageList, .exchangeList, .sResearchList, .cResearchList {
+    overflow: hidden;
+    display: none;
+    
+  }
+
+.brokerageList, .exchangeList, .sResearchList, .cResearchList ul{
+    -webkit-columns: 2;
+    -moz-columns: 2;
+    columns: 2;
+    list-style-position: inside;
+    cursor: pointer;
+}
+
+.accordion {
+    visibility: hidden;
+    background-color: #eee;
+    color: rgb(58, 58, 58);
+    cursor: pointer;
+    padding: 12px;
+    width: 100%;
+    text-align: left;
+    border: 1px solid whitesmoke;
+    outline: none;
+    transition:visibility 0.2s ease-in,opacity 0.2s ease-in;
+    opacity: 0;
+  }
+  
+  .active, .accordion:hover {
+    background-color: #ccc;
+  }
+
+  button.accordion::after{
+      content: '\002B';
+      color:#777;
+      font-weight: bold;
+      float: right;
+      margin-left: 5px;
+  }
+
+  button.accordion.active::after{
+      content: "\2212";
+  }
+
+
 /* Footer */
 footer{
     grid-area: footer;
@@ -597,4 +721,5 @@ footer{
     padding-right: 3px;
     color: inherit;
 }
+
 

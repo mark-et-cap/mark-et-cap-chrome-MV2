@@ -3,6 +3,15 @@ let focusDomain = window.location.hostname;
 let manifestVersion = chrome.runtime.getManifest();
 document.getElementById("app-version").innerText += manifestVersion.version;
 
+//Nav icons/body display variables
+let recentButton = document.querySelector('nav[class^="recentHeader"]');
+let starButton = document.querySelector('nav[class^="favorites"]');
+let searchButton = document.querySelector('nav[class^="searchHeader"]');
+let menuSpan = document.getElementById("menu-spanner");
+let recentDisplay = document.getElementsByClassName('body')[0];
+let favoritesDisplay = document.getElementsByClassName('body-favorites')[0];
+let searchDisplay = document.getElementsByClassName('body-search')[0];
+
 //sync data from chrome storage for popup display
 let recentInfo = chrome.storage.sync.get([
   "recentSymbols",
@@ -128,24 +137,42 @@ function removeAsFavorite(removeFavorite) {
   });
 };
 
-//Favorites Display
-function showFavorites(){
-  let starButton = document.querySelector('nav[class^="favorites"]');
-  let favoritesDisplay = document.getElementsByClassName('body-favorites')[0];
-  let recentDisplay = document.getElementsByClassName('recentHeader')[0];
-  let menuSpan = document.getElementById("menu-spanner");
-  starButton.addEventListener("click", function(){
-    favoritesDisplay.style.display = 'grid';
-    menuSpan.setAttribute("class", "favorite-on");
-    if(favoritesDisplay.style.display == 'grid') {
-      recentDisplay.addEventListener("click", function(){
-        favoritesDisplay.style.display = 'none';
-        menuSpan.setAttribute("class", "recent-on");
-        showFavorites();
-      });
-    };
-  });
-};
+//Nav Icon Event Listeners
+function navClickHandler() {
+  recentButton.addEventListener("click", showRecents);
+  starButton.addEventListener("click", showFavorites);
+  searchButton.addEventListener("click", showSearch);
+}
+
+function showRecents() {
+  starButton.removeEventListener("click", showFavorites);
+  searchButton.removeEventListener("click", showSearch);
+  searchDisplay.style.display  = 'none';
+  favoritesDisplay.style.display = 'none';
+  recentDisplay.style.display = 'grid';
+  menuSpan.setAttribute("class", "recent-on");
+  navClickHandler();
+}
+
+function showFavorites() {
+  recentButton.removeEventListener("click", showRecents);
+  searchButton.removeEventListener("click", showSearch);
+  recentDisplay.style.display  = 'none';
+  searchDisplay.style.display  = 'none';
+  favoritesDisplay.style.display = 'grid';
+  menuSpan.setAttribute("class", "favorite-on");
+  navClickHandler();
+}
+
+function showSearch() {
+  recentButton.removeEventListener("click", showRecents);
+  starButton.removeEventListener("click", showFavorites);
+  favoritesDisplay.style.display = 'none';
+  recentDisplay.style.display = 'none';
+  searchDisplay.style.display  = 'block';
+  menuSpan.setAttribute("class", "search-on");
+  navClickHandler();
+}
 
 //Toggles hamburg Menu on and off
 function hamburgToggle() {
@@ -236,7 +263,7 @@ document.addEventListener('DOMContentLoaded', function(){
   hamburgToggle();
   favoriteButtonSetter();
   favoriteButtonRowListener();
-  showFavorites();
+  navClickHandler();
   favoriteButtonFavListener();
 });
 
