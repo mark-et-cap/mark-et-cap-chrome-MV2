@@ -1,6 +1,6 @@
 {
   "name":  "mark et cap",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "manifest_version": 2,
   "description": "Timing is everything! Use 'cashtags' or tickers to navigate to your trading platform/exchange of choice!",
   "permissions": [
