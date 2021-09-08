@@ -15,7 +15,7 @@ chrome.runtime.onMessage.addListener(
 
 function determineOptions() {
     recentInteraction(optionsSymbol);
-    let unusualWhalesURL = 'https://unusualwhales.com/flow/ticker_flows/' + optionsSymbol ;
+    let unusualWhalesURL = 'https://unusualwhales.com/flow/tickers/' + optionsSymbol ;
     chrome.tabs.create({ url: unusualWhalesURL });
 };
 
