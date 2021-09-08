@@ -47,7 +47,7 @@ clearIcon.addEventListener("click", () => {
 
 newsBtn.addEventListener("click", () => {
     let newsTicker = tickerSearchBar.value.toString().replace(/\W+/g, '');
-    if (newsTicker.includes(cryptoNewsList)) {
+    if (cryptoNewsList.includes(newsTicker)) {
         let newsURL = "https://www.google.com/finance/quote/";
         chrome.tabs.create({url: newsURL + newsTicker + "-USD"});
     } else {
