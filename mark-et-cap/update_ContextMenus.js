@@ -156,7 +156,7 @@ chrome.runtime.onMessage.addListener(
                 } else {
                     updateUserBrokerage(menuSymbol, userBrokerageText, "selection");
                     updateSResearch(menuSymbol, userResearchText, "selection");
-                    updateOptions(umenuSymbol, serOptions, "selection"); 
+                    updateOptions(menuSymbol, userOptions, "selection"); 
                 }
             });
             chrome.storage.sync.get(["selectedExchangeText", "selectedCResearchText"], function(crypto) {
