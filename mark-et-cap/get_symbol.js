@@ -13,6 +13,7 @@ let linkList = [
     "swaggystocks.com",
     "stocktwits.com",
     "www.benzinga.com",
+    "unusualwhales.com",
     //crypto urls
     "www.coindesk.com",
     "cryptonews.com",
@@ -62,13 +63,11 @@ function updateLinkMenus(focusDomain) {
                         break;
                     case "www.benzinga.com": benzingaSymbol(hoverHref);
                         break;
+                    case "unusualwhales.com": unusualWhaleSymbol(hoverHref);
+                        break;
                     case "www.coindesk.com": coindeskSymbol(hoverHref);
                         break;
                     case "cryptonews.com": cryptonewsSymbol(hoverHref);
-                        break;
-                    case "www.coingecko.com": coingeckoSymbol(hoverHref);
-                        break;
-                    case "coinmarketcap.com": coinmarketcapSymbol(hoverHref);
                         break;
                     case "blockfolio.com": blockfolioSymbol(hoverHref);
                         break;
@@ -220,7 +219,23 @@ function benzingaSymbol(hoverHref) {
             chrome.runtime.sendMessage({content: symbolOver, message: "get_symbol"});
         }
     }
-};      
+};  
+
+function unusualWhaleSymbol(hoverHref) {
+    if (hoverHref.includes("ticker_flow")) {
+        let whaleSplit = hoverHref.split('/');
+        let symbolOver = whaleSplit[whaleSplit.length -1];
+        console.log(symbolOver);
+        chrome.runtime.sendMessage({content: symbolOver, message: "get_symbol"});
+    } else {
+        if (hoverHref.includes("/company/")) {
+        let whaleSplit = hoverHref.split('/');
+        let symbolOver = whaleSplit[whaleSplit.length -2];
+        console.log(symbolOver);
+        chrome.runtime.sendMessage({content: symbolOver, message: "get_symbol"});
+        }
+    }
+};
           
 // crypto linkList matches
 function coindeskSymbol(hoverHref) {
