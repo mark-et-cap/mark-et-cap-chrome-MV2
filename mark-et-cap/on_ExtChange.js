@@ -16,6 +16,7 @@ function setDefaultOptions(){
             'selectedCResearch': 'cresearchN/A',
             'selectedCResearchText': 'N/A',
             'enableCopy': true,
+            'enableOptions': true,
             'recentSymbols': recentSymbols,
             'recentSource': recentSource,
             'recentTimeStamp': recentTimeStamp,
