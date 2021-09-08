@@ -14,7 +14,7 @@ let stockUrls = [
     "*://*.benzinga.com/quote/*",
     "*://*.reddit.com/*",
     "*://*.discord.com/*",
-    "*://*.youtube.com/*"
+    "*://*.youtube.com/*",
      "*://*.unusualwhales.com/*"
 ];
 
