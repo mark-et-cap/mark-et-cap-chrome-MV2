@@ -36,8 +36,8 @@ function restore_options() {
       selectedExchange: 'binance',
       selectedSResearch: 'sresearchN/A',
       selectedCResearch: 'cresearchN/A',
-      enableCopy: true
-    enableOptions: true
+      enableCopy: true,
+      enableOptions: true
   }, function(items) {
     document.getElementById('brokerage').value = items.selectedBrokerage;
     document.getElementById('exchange').value = items.selectedExchange;
