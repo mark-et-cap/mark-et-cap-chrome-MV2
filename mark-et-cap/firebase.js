@@ -81,6 +81,18 @@ chrome.runtime.onMessage.addListener(
         }
       })
       return true;
+    } else if (request.message == "find_news_exchange") {
+      let thisNewsTicker = request.content;
+      firebaseDB.child("stock").child(thisNewsTicker.toUpperCase()).once('value').then(function(snapshot) {
+        if(snapshot.exists()) {
+            let stockObj = snapshot.val();
+            let stockExchange = stockObj.exchange;
+            sendResponse({dbResponse: stockExchange});
+        } else {
+            sendResponse({dbResponse: thisNewsTicker});
+        }
+      })
+      return true;
     } else {
       if(request.message == "find_research_translation") {
         let thisCResearchTicker = request.content; 
