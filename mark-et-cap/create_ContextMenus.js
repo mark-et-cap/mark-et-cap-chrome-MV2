@@ -48,14 +48,16 @@ let createAllMenus = () => {
     chrome.contextMenus.create({
         "id": "stockParent",
         "title": "Stocks",
-        "contexts": ["link"]
+        "contexts": ["link"], 
+        "targetUrlPatterns": stockUrls
     });
 
     //create crypto parent menu
     chrome.contextMenus.create({
         "id": "cryptoParent",
         "title": "Cryptocurrencies",
-        "contexts": ["link"]
+        "contexts": ["link"],
+        "targetUrlPatterns": cryptoUrls
     });
 
     //create the stock/brokerage context menu child
