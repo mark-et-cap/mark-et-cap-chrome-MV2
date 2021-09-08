@@ -8,6 +8,12 @@ let cList = document.getElementsByClassName("exchangeList");
 let rList = document.getElementsByClassName("sResearchList");
 let crList = document.getElementsByClassName("cResearchList");
 
+let cryptoNewsList = [
+    "BTC", 
+    "ETH", 
+    "BCH", 
+    "LTC"
+];
 
 //Search Bar Clear Icon + Accordion Menus
 searchBar.addEventListener("keyup", function(){
