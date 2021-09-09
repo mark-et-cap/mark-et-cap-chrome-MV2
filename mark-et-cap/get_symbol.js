@@ -225,13 +225,11 @@ function unusualWhaleSymbol(hoverHref) {
     if (hoverHref.includes("ticker_flow")) {
         let whaleSplit = hoverHref.split('/');
         let symbolOver = whaleSplit[whaleSplit.length -1];
-        console.log(symbolOver);
         chrome.runtime.sendMessage({content: symbolOver, message: "get_symbol"});
     } else {
         if (hoverHref.includes("/company/")) {
         let whaleSplit = hoverHref.split('/');
         let symbolOver = whaleSplit[whaleSplit.length -2];
-        console.log(symbolOver);
         chrome.runtime.sendMessage({content: symbolOver, message: "get_symbol"});
         }
     }
