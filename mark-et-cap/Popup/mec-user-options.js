@@ -164,6 +164,11 @@ function switchSResearch(userPopupSResearch) {
             const rTradingView = 'https://www.tradingview.com/symbols/';
             popupSResearch(rTradingView, '', "TradingView");
                 break;
+        case 'unusualwhales':
+            const rUnusualWhales = 'https://unusualwhales.com/company/';
+            const rUWSuffix = '/alerts'
+            popupSResearch(rUnusualWhales, rUWSuffix, "Unusual Whales");
+                break;
     }
 };
 

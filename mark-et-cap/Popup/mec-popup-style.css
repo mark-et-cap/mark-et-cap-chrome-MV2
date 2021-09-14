@@ -470,7 +470,8 @@ nav.hamburg{
     opacity: 1;
 }
 
-/* Action Button & Action Popup*/
+/* News Button, Action Button & Action Popup*/
+.news-button, 
 .button-action{
     background-color: lightgray;
     color: rgb(32, 32, 32);
@@ -485,6 +486,7 @@ nav.hamburg{
 
 }
 
+.news-button:hover,
 .button-action:hover{
     background-color:rgb(64, 227, 216);
     color: white;
@@ -579,13 +581,36 @@ nav.hamburg{
 }
 
 /* Search Page */
-.searchbar{
-    position: relative;
+.searchbar-header {
     display: flex;
+    justify-content:space-between;
+}
+
+.searchbar{
+    display:flex;
+    position: relative;
     max-width: 128px;
     padding-top: 5px;
     padding-left: 5px;
     padding-bottom: 3px;
+}
+
+.in-the-news {
+    float: right;
+    padding-top: 5px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+    visibility: hidden;
+}
+
+.news-button{
+    background-color: #fff;
+}
+
+.news-button span.news-icon {
+    background:url('news-16.png') no-repeat left center;
+    padding-left:20px;
+    background-color: transparent;
 }
 
 .search-icon {

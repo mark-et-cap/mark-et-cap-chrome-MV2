@@ -1,4 +1,5 @@
 let acc = document.getElementsByClassName("accordion");
+let newsBtn = document.querySelector(".news-button");
 let clearIcon = document.querySelector(".search-clear");
 let searchBar = document.querySelector(".searchTerm");
 let tickerSearchBar = document.getElementById("tickerSearchBar");
@@ -7,6 +8,12 @@ let cList = document.getElementsByClassName("exchangeList");
 let rList = document.getElementsByClassName("sResearchList");
 let crList = document.getElementsByClassName("cResearchList");
 
+let cryptoNewsList = [
+    "BTC", 
+    "ETH", 
+    "BCH", 
+    "LTC"
+];
 
 //Search Bar Clear Icon + Accordion Menus
 searchBar.addEventListener("keyup", function(){
@@ -17,12 +24,14 @@ searchBar.addEventListener("keyup", function(){
 function searchBarFill() {
   if(searchBar.value && clearIcon.style.visibility != "visible"){
     clearIcon.style.visibility = "visible";
+    newsBtn.style.visibility = "visible";
     for (let i = 0; i < acc.length; i++) {
         acc[i].style.visibility = "visible";
         acc[i].style.opacity = 1;
     }
   } else if(!searchBar.value) {
     clearIcon.style.visibility = "hidden";
+    newsBtn.style.visibility = "hidden";
     for (let i = 0; i < acc.length; i++) {
         acc[i].style.visibility = "hidden";
         acc[i].style.opacity = 0;
@@ -31,9 +40,24 @@ function searchBarFill() {
 };
 
 clearIcon.addEventListener("click", () => {
-  searchBar.value = "";
+ searchBar.value = "";
   clearIcon.style.visibility = "hidden";
-})
+  newsBtn.style.visibility = "hidden";
+});
+
+newsBtn.addEventListener("click", () => {
+    let newsTicker = tickerSearchBar.value.toString().replace(/\W+/g, '');
+    if (cryptoNewsList.includes(newsTicker)) {
+        let newsURL = "https://www.google.com/finance/quote/";
+        chrome.tabs.create({url: newsURL + newsTicker + "-USD"});
+    } else {
+        chrome.runtime.sendMessage({content: newsTicker.toUpperCase(), message: "find_news_exchange"}, function(response) {
+            let newsURL = "https://www.google.com/finance/quote/";
+            let newsExchange = response.dbResponse; 
+            chrome.tabs.create({url: newsURL + newsTicker + ":" + newsExchange});
+        })
+    }
+});
 
 
 //Accordion click handlers
@@ -221,7 +245,8 @@ let reddit = document.getElementsByClassName('reddit')[0];
 let benzinga = document.getElementsByClassName('benzinga')[0];
 let swaggystocks = document.getElementsByClassName('swaggystocks')[0];
 let stocktwits = document.getElementsByClassName('stocktwits')[0];
-let tradingview = document.getElementsByClassName('tradingview')[0];        
+let tradingview = document.getElementsByClassName('tradingview')[0];
+let unusualwhales = document.getElementsByClassName('unusualwhales')[0];    
    
 twitter.addEventListener("click",  function() {
     let twitterURL = 'https://twitter.com/search?q=%24'; 
@@ -296,6 +321,12 @@ tradingview.addEventListener("click",  function() {
     let searchTicker = tickerSearchBar.value.toString().replace(/\W+/g, '');
     chrome.tabs.create({url: tradingviewURL + searchTicker});
 });
+
+unusualwhales.addEventListener("click", function() {
+    let unusualwhalesURL = 'https://unusualwhales.com/company/';
+    let searchTicker = tickerSearchBar.value.toString().replace(/\W+/g, '');
+    chrome.tabs.create({url: unusualwhalesURL + searchTicker + '/alerts'}) 
+}); 
 
 //Crypto Research
 let cTwitter = document.getElementsByClassName('cTwitter')[0];

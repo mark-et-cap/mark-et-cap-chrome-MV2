@@ -36,6 +36,8 @@ function determineSResearch() {
                 break;
             case 'tradingview': researchTradingView();
                 break;
+            case 'unusualwhales': researchUnusualWhales();
+                break;
         };
     });
 };
@@ -124,4 +126,10 @@ function researchTradingView() {
     recentInteraction(stockResearch);
     let rTradingView = 'https://www.tradingview.com/symbols/' + stockResearch;
     chrome.tabs.create({ url: rTradingView });
-}
+};
+
+function researchUnusualWhales() {
+    recentInteraction(stockResearch);
+    let rUnusualWhales = 'https://unusualwhales.com/company/' + stockResearch + '/alerts';
+    chrome.tabs.create({ url: rUnusualWhales });
+};

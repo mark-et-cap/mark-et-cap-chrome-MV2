@@ -14,7 +14,8 @@ let stockUrls = [
     "*://*.benzinga.com/quote/*",
     "*://*.reddit.com/*",
     "*://*.discord.com/*",
-    "*://*.youtube.com/*"
+    "*://*.youtube.com/*",
+     "*://*.unusualwhales.com/*"
 ];
 
 let cryptoUrls = [
@@ -43,13 +44,30 @@ let createAllMenus = () => {
         "targetUrlPatterns": [].concat(stockUrls, cryptoUrls)
     });
 
-    //create the stock/brokerage context menu
+   //create stock parent menu
+    chrome.contextMenus.create({
+        "id": "stockParent",
+        "title": "Stocks",
+        "contexts": ["link"], 
+        "targetUrlPatterns": stockUrls
+    });
+
+    //create crypto parent menu
+    chrome.contextMenus.create({
+        "id": "cryptoParent",
+        "title": "Cryptocurrencies",
+        "contexts": ["link"],
+        "targetUrlPatterns": cryptoUrls
+    });
+
+    //create the stock/brokerage context menu child
     chrome.contextMenus.create({
         "id": "brokerageMenu",
         "title": "Open brokerage",
         "contexts": ["link"],
         "onclick": determineBrokerage,
-        "targetUrlPatterns": stockUrls
+        "targetUrlPatterns": stockUrls, 
+        "parentId": "stockParent"
     });
 
     //create the crypto exchange context menu
@@ -58,7 +76,8 @@ let createAllMenus = () => {
         "title": "Open exchange",
         "contexts": ["link"],
         "onclick": determineExchange,
-        "targetUrlPatterns": cryptoUrls
+        "targetUrlPatterns": cryptoUrls, 
+        "parentId": "cryptoParent"
     });
 
     chrome.contextMenus.create({
@@ -66,7 +85,8 @@ let createAllMenus = () => {
         "title": "Open stock research",
         "contexts": ["link"],
         "onclick": determineSResearch,
-        "targetUrlPatterns": stockUrls
+        "targetUrlPatterns": stockUrls, 
+        "parentId": "stockParent"
     });
 
     chrome.contextMenus.create({
@@ -74,7 +94,43 @@ let createAllMenus = () => {
         "title": "Open crypto research",
         "contexts": ["link"],
         "onclick": determineCResearch,
-        "targetUrlPatterns": cryptoUrls
+        "targetUrlPatterns": cryptoUrls, 
+        "parentId": "cryptoParent"
+    });
+
+    chrome.contextMenus.create({
+        "id": "stockOptions",
+        "title": "Options",
+        "contexts": ["link"],
+        "targetUrlPatterns": stockUrls, 
+        "parentId": "stockParent"
+    });
+
+    chrome.contextMenus.create({
+        "id": "sOptionsSite",
+        "title": "Open Options Search",
+        "contexts": ["link"],
+        "onclick": determineOptions,
+        "targetUrlPatterns": stockUrls, 
+        "parentId": "stockOptions"
+    });
+
+    chrome.contextMenus.create({
+        "id": "sOptionsCalcCall",
+        "title": "Call Option",
+        "contexts": ["link"],
+        "onclick": determineOptionsCalcCall,
+        "targetUrlPatterns": stockUrls, 
+        "parentId": "stockOptions"
+    });
+
+    chrome.contextMenus.create({
+        "id": "sOptionsCalcPut",
+        "title": "Put Option",
+        "contexts": ["link"],
+        "onclick": determineOptionsCalcPut,
+        "targetUrlPatterns": stockUrls, 
+        "parentId": "stockOptions"
     });
     
     chrome.contextMenus.create({
