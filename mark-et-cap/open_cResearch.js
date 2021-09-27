@@ -36,6 +36,61 @@ function determineCResearch() {
     });
 };
 
+function determineCResearch2() {
+    chrome.storage.sync.get(["selectedCResearch2"], function(obj) {
+        userCResearch = obj.selectedCResearch2;
+        switch (userCResearch){
+            case 'ctwitter': cresearchTwitter();
+                break;
+            case 'cryptonews': researchCryptoNews();
+                break;
+            case 'coingecko': researchCoinGecko();
+                break; 
+            case 'coindesk': researchCoinDesk();
+                break;
+            case 'cyahoofinance': researchCYahoo();
+                break;
+            case 'coinmarketcap': researchCoinMarketCap();
+                break;
+            case 'blockfolio': researchBlockfolio();
+                break;
+            case 'creddit': researchCReddit();
+                break;
+            case 'defipulse': researchDefiPulse();
+                break;
+            case 'ctradingview': cresearchTradingView();
+                break;
+        };
+    });
+};
+
+function determineCResearch3() {
+    chrome.storage.sync.get(["selectedCResearch3"], function(obj) {
+        userCResearch = obj.selectedCResearch3;
+        switch (userCResearch){
+            case 'ctwitter': cresearchTwitter();
+                break;
+            case 'cryptonews': researchCryptoNews();
+                break;
+            case 'coingecko': researchCoinGecko();
+                break; 
+            case 'coindesk': researchCoinDesk();
+                break;
+            case 'cyahoofinance': researchCYahoo();
+                break;
+            case 'coinmarketcap': researchCoinMarketCap();
+                break;
+            case 'blockfolio': researchBlockfolio();
+                break;
+            case 'creddit': researchCReddit();
+                break;
+            case 'defipulse': researchDefiPulse();
+                break;
+            case 'ctradingview': cresearchTradingView();
+                break;
+        };
+    });
+};
 //** UPDATE BELOW w/ function name/address, cryptoResearch symbol, etc **
 //order of the recentInteraction function matters, messaging from recent_Symbol.js to get_Symbol.js
 //using chrome.tabs.query (where tab[0].id is where the message will be sent) if the new tab is created
