@@ -1,0 +1,67 @@
+* {
+    background-color: white;
+    font-family: "Segoe UI", Candara, "Bitstream Vera Sans", "DejaVu Sans", "Bitstream Vera Sans", "Trebuchet MS", Verdana, "Verdana Ref", sans-serif;
+}
+
+#icon {
+    display: inline;
+}
+
+#title {
+    display: inline-flex;
+    margin-left: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: larger;
+}
+
+.options-dropdowns{
+    display: table;
+    width: 325px;
+}
+
+.options-wrapper{
+    display: table-row;
+    margin: 3px;
+}
+
+.options-wrapper select{
+    float: right;
+    overflow: hidden;
+}
+
+.options-checkbox-wrapper {
+    display: table-row;
+}
+
+.css-checkbox {
+    float: right;
+    margin-right: 50px;
+}
+
+.tooltip {
+    display: inline-flex;
+    border-bottom: 1px dotted black;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 10px;
+    font-size: larger;
+}
+  
+.tooltip .tooltip-text {
+    visibility: hidden;
+    width: 150px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+  
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+}
+  
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+}
