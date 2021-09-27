@@ -32,6 +32,53 @@ function determineBrokerage() {
     });
 };
 
+function determineBrokerage2() {
+    chrome.storage.sync.get(["selectedBrokerage2"], function(obj) {
+        userBrokerage = obj.selectedBrokerage2;
+        switch (userBrokerage){
+            case "robinhood": browserRobinhood();
+                break;
+            case 'sofi': browserSofi();
+                break;
+            case 'webull': browserWebull();
+                break;
+            case 'tdameritrade': browserTDA();
+                break;
+            case 'etrade': browserEtrade();
+                break;
+            case 'charlesschwab': browserCharles();
+                break;
+            case 'merrilledge': browserMerrill();
+                break;
+            case 'fidelity': browserFidelity();
+                break;
+        };
+    });
+};
+
+function determineBrokerage3() {
+    chrome.storage.sync.get(["selectedBrokerage3"], function(obj) {
+        userBrokerage = obj.selectedBrokerage3;
+        switch (userBrokerage){
+            case "robinhood": browserRobinhood();
+                break;
+            case 'sofi': browserSofi();
+                break;
+            case 'webull': browserWebull();
+                break;
+            case 'tdameritrade': browserTDA();
+                break;
+            case 'etrade': browserEtrade();
+                break;
+            case 'charlesschwab': browserCharles();
+                break;
+            case 'merrilledge': browserMerrill();
+                break;
+            case 'fidelity': browserFidelity();
+                break;
+        };
+    });
+};
 //order of the recentInteraction function matters, messaging from recent_Symbol.js to get_Symbol.js
 //using chrome.tabs.query (where tab[0].id is where the message will be sent) if the new tab is created
 //as part of the below functions, the focusDomain is lost
