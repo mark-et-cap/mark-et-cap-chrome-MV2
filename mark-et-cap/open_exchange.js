@@ -36,6 +36,62 @@ function determineExchange() {
     });
 };
 
+function determineExchange2() {
+    chrome.storage.sync.get(["selectedExchange2"], function(obj) {
+        userExchange = obj.selectedExchange2;
+        switch (userExchange){
+            case 'binance': browserBinance();
+                break;
+            case 'coinbase': browserCoinbase();
+                break;
+            case 'gemini': browserGemini();
+                break;
+            case 'robinhoodcrypto': browserRHCrypto();
+                break;
+            case 'cex': browserCex();
+                break;
+            case 'bitfinex': browserBitfinex();
+                break;
+            case 'bittrex': browserBittrex();
+                break;
+            case 'kraken': browserKraken();
+                break;
+            case 'cryptocom': browserCryptocom();
+                break;
+            case 'etoro': browserEtoro();
+                break;
+        };
+    });
+};
+
+function determineExchange3() {
+    chrome.storage.sync.get(["selectedExchange3"], function(obj) {
+        userExchange = obj.selectedExchange3;
+        switch (userExchange){
+            case 'binance': browserBinance();
+                break;
+            case 'coinbase': browserCoinbase();
+                break;
+            case 'gemini': browserGemini();
+                break;
+            case 'robinhoodcrypto': browserRHCrypto();
+                break;
+            case 'cex': browserCex();
+                break;
+            case 'bitfinex': browserBitfinex();
+                break;
+            case 'bittrex': browserBittrex();
+                break;
+            case 'kraken': browserKraken();
+                break;
+            case 'cryptocom': browserCryptocom();
+                break;
+            case 'etoro': browserEtoro();
+                break;
+        };
+    });
+};
+
 //order of the recentInteraction function matters, messaging from recent_Symbol.js to get_Symbol.js
 //using chrome.tabs.query (where tab[0].id is where the message will be sent) if the new tab is created
 //as part of the below functions, the focusDomain is lost
