@@ -4,6 +4,7 @@ let focusDomain = window.location.hostname;
 //cashtag websites
 let linkList = [
     "twitter.com",
+    "tweetdeck.twitter.com",
     "www.marketwatch.com",
     "www.barchart.com",
     "www.fool.com",
@@ -44,6 +45,8 @@ function updateLinkMenus(focusDomain) {
             if(hoverHref !== "undefined") {
                 switch (focusDomain) {
                     case "twitter.com": twitterSymbol(hoverHref);
+                        break;
+                    case "tweetdeck.twitter.com": tweetdeckSymbol(hoverHref);
                         break;
                     case "www.marketwatch.com": marketwatchSymbol(hoverHref);
                         break;
@@ -95,6 +98,13 @@ function updateSelectionMenus() {
 //Stock linkList matches
 function twitterSymbol(hoverHref) {
     if (hoverHref.substring(0,32) == "https://twitter.com/search?q=%24") { 
+        let symbolOver = hoverHref.split('%24').pop().split('&src')[0];
+        chrome.runtime.sendMessage({content: symbolOver, message: "get_symbol"});
+    }
+};
+
+function tweetdeckSymbol(hoverHref) {
+    if(hoverHref.includes("src=cashtag_click")) {
         let symbolOver = hoverHref.split('%24').pop().split('&src')[0];
         chrome.runtime.sendMessage({content: symbolOver, message: "get_symbol"});
     }

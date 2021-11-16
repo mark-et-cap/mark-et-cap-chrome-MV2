@@ -42,6 +42,74 @@ function determineSResearch() {
     });
 };
 
+function determineSResearch2() {
+    chrome.storage.sync.get(["selectedSResearch2"], function(obj) {
+        userResearch = obj.selectedSResearch2;
+        switch (userResearch){
+            case 'stwitter': researchTwitter();
+                break;
+            case 'marketwatch': researchMarketWatch();
+                break;
+            case 'barchart': researchBarchart();
+                break;
+            case 'motleyfool': researchMotley();
+                break;
+            case 'yahoofinance': researchYahoo();
+                break;
+            case 'zackscom': researchZacks();
+                break;
+            case 'finviz': researchfinviz();
+                break;
+            case 'sreddit': researchReddit();
+                break;
+            case 'swaggystocks': researchSwaggy();
+                break;
+            case 'benzinga': researchBenzinga();
+                break;
+            case 'stocktwits': researchStocktwits();
+                break;
+            case 'tradingview': researchTradingView();
+                break;
+            case 'unusualwhales': researchUnusualWhales();
+                break;
+        };
+    });
+};
+
+function determineSResearch3() {
+    chrome.storage.sync.get(["selectedSResearch3"], function(obj) {
+        userResearch = obj.selectedSResearch3;
+        switch (userResearch){
+            case 'stwitter': researchTwitter();
+                break;
+            case 'marketwatch': researchMarketWatch();
+                break;
+            case 'barchart': researchBarchart();
+                break;
+            case 'motleyfool': researchMotley();
+                break;
+            case 'yahoofinance': researchYahoo();
+                break;
+            case 'zackscom': researchZacks();
+                break;
+            case 'finviz': researchfinviz();
+                break;
+            case 'sreddit': researchReddit();
+                break;
+            case 'swaggystocks': researchSwaggy();
+                break;
+            case 'benzinga': researchBenzinga();
+                break;
+            case 'stocktwits': researchStocktwits();
+                break;
+            case 'tradingview': researchTradingView();
+                break;
+            case 'unusualwhales': researchUnusualWhales();
+                break;
+        };
+    });
+};
+
 /** To add new site, UPDATE BELOW w/ function name/url, stockResearch symbol, etc */
 //order of the recentInteraction function matters, messaging from recent_Symbol.js to get_Symbol.js
 //using chrome.tabs.query (where tab[0].id is where the message will be sent) if the new tab is created

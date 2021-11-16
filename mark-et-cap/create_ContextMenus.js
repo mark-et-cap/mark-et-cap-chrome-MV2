@@ -60,7 +60,15 @@ let createAllMenus = () => {
         "targetUrlPatterns": cryptoUrls
     });
 
-    //create the stock/brokerage context menu child
+    //create stock options parent menu
+    chrome.contextMenus.create({
+        "id": "stockOptions",
+        "title": "Stock Options",
+        "contexts": ["link"],
+        "targetUrlPatterns": stockUrls
+    });
+
+    //create the stock/brokerage context menus
     chrome.contextMenus.create({
         "id": "brokerageMenu",
         "title": "Open brokerage",
@@ -70,7 +78,25 @@ let createAllMenus = () => {
         "parentId": "stockParent"
     });
 
-    //create the crypto exchange context menu
+    chrome.contextMenus.create({
+        "id": "brokerageMenu2",
+        "title": "Open brokerage",
+        "contexts": ["link"],
+        "onclick": determineBrokerage2,
+        "targetUrlPatterns": stockUrls, 
+        "parentId": "stockParent"
+    });
+
+    chrome.contextMenus.create({
+        "id": "brokerageMenu3",
+        "title": "Open brokerage",
+        "contexts": ["link"],
+        "onclick": determineBrokerage3,
+        "targetUrlPatterns": stockUrls, 
+        "parentId": "stockParent"
+    });
+
+    //create the crypto exchange context menus
     chrome.contextMenus.create({
         "id": "exchangeMenu",
         "title": "Open exchange",
@@ -81,6 +107,26 @@ let createAllMenus = () => {
     });
 
     chrome.contextMenus.create({
+        "id": "exchangeMenu2",
+        "title": "Open exchange",
+        "contexts": ["link"],
+        "onclick": determineExchange2,
+        "targetUrlPatterns": cryptoUrls, 
+        "parentId": "cryptoParent"
+    });
+
+    chrome.contextMenus.create({
+        "id": "exchangeMenu3",
+        "title": "Open exchange",
+        "contexts": ["link"],
+        "onclick": determineExchange3,
+        "targetUrlPatterns": cryptoUrls, 
+        "parentId": "cryptoParent"
+    });
+
+
+    //create the stock research context menus
+    chrome.contextMenus.create({
         "id": "sResearchMenu",
         "title": "Open stock research",
         "contexts": ["link"],
@@ -89,6 +135,26 @@ let createAllMenus = () => {
         "parentId": "stockParent"
     });
 
+    chrome.contextMenus.create({
+        "id": "sResearchMenu2",
+        "title": "Open stock research",
+        "contexts": ["link"],
+        "onclick": determineSResearch2,
+        "targetUrlPatterns": stockUrls, 
+        "parentId": "stockParent"
+    });
+
+    chrome.contextMenus.create({
+        "id": "sResearchMenu3",
+        "title": "Open stock research",
+        "contexts": ["link"],
+        "onclick": determineSResearch3,
+        "targetUrlPatterns": stockUrls, 
+        "parentId": "stockParent"
+    });
+
+
+    //create the crypto research context menus
     chrome.contextMenus.create({
         "id": "cResearchMenu",
         "title": "Open crypto research",
@@ -99,13 +165,25 @@ let createAllMenus = () => {
     });
 
     chrome.contextMenus.create({
-        "id": "stockOptions",
-        "title": "Options",
+        "id": "cResearchMenu2",
+        "title": "Open crypto research",
         "contexts": ["link"],
-        "targetUrlPatterns": stockUrls, 
-        "parentId": "stockParent"
+        "onclick": determineCResearch2,
+        "targetUrlPatterns": cryptoUrls, 
+        "parentId": "cryptoParent"
     });
 
+
+    chrome.contextMenus.create({
+        "id": "cResearchMenu3",
+        "title": "Open crypto research",
+        "contexts": ["link"],
+        "onclick": determineCResearch3,
+        "targetUrlPatterns": cryptoUrls, 
+        "parentId": "cryptoParent"
+    });
+
+    //create the stock options context menu children
     chrome.contextMenus.create({
         "id": "sOptionsSite",
         "title": "Open Options Search",
@@ -133,6 +211,7 @@ let createAllMenus = () => {
         "parentId": "stockOptions"
     });
     
+    //create search all context menu 
     chrome.contextMenus.create({
         "id": "searchAll",
         "title": "Search all sites...",

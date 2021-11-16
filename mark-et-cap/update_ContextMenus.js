@@ -16,13 +16,37 @@ chrome.runtime.onMessage.addListener(
             chrome.contextMenus.update("brokerageMenu", {
                 "contexts": ["link"]
             });
+            chrome.contextMenus.update("brokerageMenu2", {
+                "contexts": ["link"]
+            });
+            chrome.contextMenus.update("brokerageMenu3", {
+                "contexts": ["link"]
+            });
             chrome.contextMenus.update("exchangeMenu", {
+                "contexts": ["link"]
+            });
+            chrome.contextMenus.update("exchangeMenu2", {
+                "contexts": ["link"]
+            });
+            chrome.contextMenus.update("exchangeMenu3", {
                 "contexts": ["link"]
             });
             chrome.contextMenus.update("sResearchMenu", {
                 "contexts": ["link"]
             });
+            chrome.contextMenus.update("sResearchMenu2", {
+                "contexts": ["link"]
+            });
+            chrome.contextMenus.update("sResearchMenu3", {
+                "contexts": ["link"]
+            });
             chrome.contextMenus.update("cResearchMenu", {
+                "contexts": ["link"]
+            });
+            chrome.contextMenus.update("cResearchMenu2", {
+                "contexts": ["link"]
+            });
+            chrome.contextMenus.update("cResearchMenu3", {
                 "contexts": ["link"]
             });
             chrome.contextMenus.update("stockOptions", {
@@ -54,13 +78,37 @@ chrome.runtime.onMessage.addListener(
                 chrome.contextMenus.update("brokerageMenu", {
                     "contexts": ["selection"]
                 });
+                chrome.contextMenus.update("brokerageMenu2", {
+                    "contexts": ["selection"]
+                });
+                chrome.contextMenus.update("brokerageMenu3", {
+                    "contexts": ["selection"]
+                });
                 chrome.contextMenus.update("exchangeMenu", {
+                    "contexts": ["selection"]
+                });
+                chrome.contextMenus.update("exchangeMenu2", {
+                    "contexts": ["selection"]
+                });
+                chrome.contextMenus.update("exchangeMenu3", {
                     "contexts": ["selection"]
                 });
                 chrome.contextMenus.update("sResearchMenu", {
                     "contexts": ["selection"]
                 });
+                chrome.contextMenus.update("sResearchMenu2", {
+                    "contexts": ["selection"]
+                });
+                chrome.contextMenus.update("sResearchMenu3", {
+                    "contexts": ["selection"]
+                });
                 chrome.contextMenus.update("cResearchMenu", {
+                    "contexts": ["selection"]
+                });
+                chrome.contextMenus.update("cResearchMenu2", {
+                    "contexts": ["selection"]
+                });
+                chrome.contextMenus.update("cResearchMenu3", {
                     "contexts": ["selection"]
                 });
                 chrome.contextMenus.update("stockOptions", {
@@ -102,31 +150,70 @@ chrome.runtime.onMessage.addListener(
                     });
                 }
             });
-            chrome.storage.sync.get(["selectedBrokerageText", "selectedSResearchText", "enableOptions"], function(stocks) {
+            chrome.storage.sync.get([
+                "selectedBrokerageText", 
+                "selectedBrokerageText2", 
+                "selectedBrokerageText3", 
+                "selectedSResearchText", 
+                "selectedSResearchText2", 
+                "selectedSResearchText3"
+            ], function(stocks) {
                 userBrokerageText = stocks.selectedBrokerageText;
+                userBrokerageText2 = stocks.selectedBrokerageText2;
+                userBrokerageText3 = stocks.selectedBrokerageText3;
                 userResearchText = stocks.selectedSResearchText;
-                userOptions = stocks.enableOptions;
-                if (userBrokerageText === "N/A" && userResearchText === "N/A" && userOptions === false) {
+                userResearchText2 = stocks.selectedSResearchText2;
+                userResearchText3 = stocks.selectedSResearchText3;
+                if (userBrokerageText === "N/A" && userResearchText === "N/A") {
                     chrome.contextMenus.update("stockParent", {
                         "visible": false
                     });
                 } else {
                     updateUserBrokerage(menuSymbol, userBrokerageText);
+                    updateUserBrokerage2(menuSymbol, userBrokerageText2);
+                    updateUserBrokerage3(menuSymbol, userBrokerageText3);
                     updateSResearch(menuSymbol, userResearchText);
-                    updateOptions(menuSymbol, userOptions); 
+                    updateSResearch2(menuSymbol, userResearchText2);
+                    updateSResearch3(menuSymbol, userResearchText3);
+                    
                 }
             });
-            chrome.storage.sync.get(["selectedExchangeText", "selectedCResearchText"], function(crypto) {
+            chrome.storage.sync.get([
+                "selectedExchangeText",
+                "selectedExchangeText2", 
+                "selectedExchangeText3",  
+                "selectedCResearchText",
+                "selectedCResearchText2",
+                "selectedCResearchText3"
+            ], function(crypto) {
                 userExchangeText = crypto.selectedExchangeText;
+                userExchangeText2 = crypto.selectedExchangeText2;
+                userExchangeText3 = crypto.selectedExchangeText3;
                 userCResearchText = crypto.selectedCResearchText;
+                userCResearchText2 = crypto.selectedCResearchText2;
+                userCResearchText3 = crypto.selectedCResearchText3;
                 if (userExchangeText === "N/A" && userCResearchText === "N/A") {
                     chrome.contextMenus.update("cryptoParent", {
                         "visible": false
                     });
                 } else {
                     updateUserExchange(menuSymbol, userExchangeText);
+                    updateUserExchange2(menuSymbol, userExchangeText2);
+                    updateUserExchange3(menuSymbol, userExchangeText3);
                     updateCResearch(menuSymbol, userCResearchText);
+                    updateCResearch2(menuSymbol, userCResearchText2);
+                    updateCResearch3(menuSymbol, userCResearchText3);
                 }      
+            });
+            chrome.storage.sync.get(["enableOptions"], function(options) {
+                userOptions = options.enableOptions;
+                if (userOptions === false) {
+                    chrome.contextMenus.update("stockOptions", {
+                        "visible": false
+                    });
+                } else {
+                    updateOptions(menuSymbol, userOptions); 
+                }
             });
             chrome.contextMenus.update("searchAll", {
                 "visible": true
@@ -145,31 +232,69 @@ chrome.runtime.onMessage.addListener(
                     });
                 }
             });
-            chrome.storage.sync.get(["selectedBrokerageText", "selectedSResearchText", "enableOptions"], function(stocks) {
+            chrome.storage.sync.get([
+                "selectedBrokerageText",
+                "selectedBrokerageText2", 
+                "selectedBrokerageText3",  
+                "selectedSResearchText",
+                "selectedSResearchText2", 
+                "selectedSResearchText3"  
+            ], function(stocks) {
                 userBrokerageText = stocks.selectedBrokerageText;
+                userBrokerageText2 = stocks.selectedBrokerageText2;
+                userBrokerageText3 = stocks.selectedBrokerageText3;
                 userResearchText = stocks.selectedSResearchText;
-                userOptions = stocks.enableOptions;
-                if (userBrokerageText === "N/A" && userResearchText === "N/A" && userOptions === false) {
+                userResearchText2 = stocks.selectedSResearchText2;
+                userResearchText3 = stocks.selectedSResearchText3;
+                if (userBrokerageText === "N/A" && userResearchText === "N/A") {
                     chrome.contextMenus.update("stockParent", {
                         "visible": false
                     });
                 } else {
                     updateUserBrokerage(menuSymbol, userBrokerageText, "selection");
+                    updateUserBrokerage2(menuSymbol, userBrokerageText2, "selection");
+                    updateUserBrokerage3(menuSymbol, userBrokerageText3, "selection");
                     updateSResearch(menuSymbol, userResearchText, "selection");
-                    updateOptions(menuSymbol, userOptions, "selection"); 
+                    updateSResearch2(menuSymbol, userResearchText2, "selection");
+                    updateSResearch3(menuSymbol, userResearchText3, "selection");
                 }
             });
-            chrome.storage.sync.get(["selectedExchangeText", "selectedCResearchText"], function(crypto) {
+            chrome.storage.sync.get([
+                "selectedExchangeText",
+                "selectedExchangeText2",
+                "selectedExchangeText3", 
+                "selectedCResearchText",
+                "selectedCResearchText2",
+                "selectedCResearchText3"
+            ], function(crypto) {
                 userExchangeText = crypto.selectedExchangeText;
+                userExchangeText2 = crypto.selectedExchangeText2;
+                userExchangeText3 = crypto.selectedExchangeText3;
                 userCResearchText = crypto.selectedCResearchText;
+                userCResearchText2 = crypto.selectedCResearchText2;
+                userCResearchText3 = crypto.selectedCResearchText3;
                 if (userExchangeText === "N/A" && userCResearchText === "N/A") {
                     chrome.contextMenus.update("cryptoParent", {
                         "visible": false
                     });
                 } else {
                     updateUserExchange(menuSymbol, userExchangeText, "selection");
+                    updateUserExchange2(menuSymbol, userExchangeText2, "selection");
+                    updateUserExchange3(menuSymbol, userExchangeText3, "selection");
                     updateCResearch(menuSymbol, userCResearchText, "selection");
+                    updateCResearch2(menuSymbol, userCResearchText2, "selection");
+                    updateCResearch3(menuSymbol, userCResearchText3, "selection");
                 }      
+            });
+            chrome.storage.sync.get(["enableOptions"], function(options) {
+                userOptions = options.enableOptions;
+                if (userOptions === false) {
+                    chrome.contextMenus.update("stockOptions", {
+                        "visible": false
+                    });
+                } else {
+                    updateOptions(menuSymbol, userOptions, "selection"); 
+                }
             });
             chrome.contextMenus.update("searchAll", { 
                 "visible": true
@@ -182,13 +307,37 @@ chrome.runtime.onMessage.addListener(
                 chrome.contextMenus.update("brokerageMenu", {
                     "visible": false
                 });
+                chrome.contextMenus.update("brokerageMenu2", {
+                    "visible": false
+                });
+                chrome.contextMenus.update("brokerageMenu3", {
+                    "visible": false
+                });
                 chrome.contextMenus.update("exchangeMenu", {
+                    "visible": false
+                });
+                chrome.contextMenus.update("exchangeMenu2", {
+                    "visible": false
+                });
+                chrome.contextMenus.update("exchangeMenu3", {
                     "visible": false
                 });
                 chrome.contextMenus.update("sResearchMenu", {
                     "visible": false
                 });
+                chrome.contextMenus.update("sResearchMenu2", {
+                    "visible": false
+                });
+                chrome.contextMenus.update("sResearchMenu3", {
+                    "visible": false
+                });
                 chrome.contextMenus.update("cResearchMenu", {
+                    "visible": false
+                });
+                chrome.contextMenus.update("cResearchMenu2", {
+                    "visible": false
+                });
+                chrome.contextMenus.update("cResearchMenu3", {
                     "visible": false
                 });
                 chrome.contextMenus.update("stockOptions", {
@@ -211,6 +360,8 @@ chrome.runtime.onMessage.addListener(
     }
 );
 
+
+//update brokerage menus
 function updateUserBrokerage(menuSymbol, userBrokerageText, selection) {
     if (userBrokerageText === "N/A") {
         chrome.contextMenus.update("brokerageMenu", {
@@ -219,19 +370,62 @@ function updateUserBrokerage(menuSymbol, userBrokerageText, selection) {
     } else {
         if(selection === "selection") {
             chrome.contextMenus.update("brokerageMenu", {
-                "title": `Open ${menuSymbol.toUpperCase()} w/ ${userBrokerageText}`,
+                "title": `View/Trade ${menuSymbol.toUpperCase()} - ${userBrokerageText}`,
                 "contexts": ["selection"],
                 "visible": true 
             });
         } else {
             chrome.contextMenus.update("brokerageMenu", {
-                "title": `Open ${menuSymbol.toUpperCase()} w/ ${userBrokerageText}`,
+                "title": `View/Trade ${menuSymbol.toUpperCase()} - ${userBrokerageText}`,
                 "visible": true 
             });
         }
     }
 };
 
+function updateUserBrokerage2(menuSymbol, userBrokerageText, selection) {
+    if (userBrokerageText === "N/A") {
+        chrome.contextMenus.update("brokerageMenu2", {
+            "visible": false
+        });
+    } else {
+        if(selection === "selection") {
+            chrome.contextMenus.update("brokerageMenu2", {
+                "title": `View/Trade ${menuSymbol.toUpperCase()} - ${userBrokerageText}`,
+                "contexts": ["selection"],
+                "visible": true 
+            });
+        } else {
+            chrome.contextMenus.update("brokerageMenu2", {
+                "title": `View/Trade ${menuSymbol.toUpperCase()} - ${userBrokerageText}`,
+                "visible": true 
+            });
+        }
+    }
+};
+
+function updateUserBrokerage3(menuSymbol, userBrokerageText, selection) {
+    if (userBrokerageText === "N/A") {
+        chrome.contextMenus.update("brokerageMenu3", {
+            "visible": false
+        });
+    } else {
+        if(selection === "selection") {
+            chrome.contextMenus.update("brokerageMenu3", {
+                "title": `View/Trade ${menuSymbol.toUpperCase()} - ${userBrokerageText3}`,
+                "contexts": ["selection"],
+                "visible": true 
+            });
+        } else {
+            chrome.contextMenus.update("brokerageMenu3", {
+                "title": `View/Trade ${menuSymbol.toUpperCase()} - ${userBrokerageText3}`,
+                "visible": true 
+            });
+        }
+    }
+};
+
+//update exchange menus
 function updateUserExchange(menuSymbol, userExchangeText, selection) {
     if (userExchangeText === "N/A") {
         chrome.contextMenus.update("exchangeMenu", {
@@ -240,19 +434,62 @@ function updateUserExchange(menuSymbol, userExchangeText, selection) {
      } else {
         if(selection === "selection") {
             chrome.contextMenus.update("exchangeMenu", {
-                "title": `Open ${menuSymbol.toUpperCase()} w/ ${userExchangeText}`,
+                "title": `View/Trade ${menuSymbol.toUpperCase()} - ${userExchangeText}`,
                 "contexts": ["selection"],
                 "visible": true  
             });
         } else {
             chrome.contextMenus.update("exchangeMenu", {
-                "title": `Open ${menuSymbol.toUpperCase()} w/ ${userExchangeText}`,
+                "title": `View/Trade ${menuSymbol.toUpperCase()} - ${userExchangeText}`,
                 "visible": true  
             });
         }
     }        
 };
 
+function updateUserExchange2(menuSymbol, userExchangeText, selection) {
+    if (userExchangeText === "N/A") {
+        chrome.contextMenus.update("exchangeMenu2", {
+            "visible": false
+        });
+     } else {
+        if(selection === "selection") {
+            chrome.contextMenus.update("exchangeMenu2", {
+                "title": `View/Trade ${menuSymbol.toUpperCase()} - ${userExchangeText}`,
+                "contexts": ["selection"],
+                "visible": true  
+            });
+        } else {
+            chrome.contextMenus.update("exchangeMenu2", {
+                "title": `View/Trade ${menuSymbol.toUpperCase()} - ${userExchangeText}`,
+                "visible": true  
+            });
+        }
+    }        
+};
+
+function updateUserExchange3(menuSymbol, userExchangeText, selection) {
+    if (userExchangeText === "N/A") {
+        chrome.contextMenus.update("exchangeMenu3", {
+            "visible": false
+        });
+     } else {
+        if(selection === "selection") {
+            chrome.contextMenus.update("exchangeMenu3", {
+                "title": `View/Trade ${menuSymbol.toUpperCase()} - ${userExchangeText}`,
+                "contexts": ["selection"],
+                "visible": true  
+            });
+        } else {
+            chrome.contextMenus.update("exchangeMenu3", {
+                "title": `View/Trade ${menuSymbol.toUpperCase()} - ${userExchangeText}`,
+                "visible": true  
+            });
+        }
+    }        
+};
+
+//update stock research menus
 function updateSResearch(menuSymbol, userResearchText, selection) {
     if (userResearchText === "N/A") {
         chrome.contextMenus.update("sResearchMenu", {
@@ -261,19 +498,62 @@ function updateSResearch(menuSymbol, userResearchText, selection) {
     } else {
         if(selection === "selection") {
             chrome.contextMenus.update("sResearchMenu", {
-                "title": `Open ${menuSymbol.toUpperCase()} w/ ${userResearchText}`,
+                "title": `Research ${menuSymbol.toUpperCase()} - ${userResearchText}`,
                 "contexts": ["selection"],
                 "visible": true  
             });
         } else {
             chrome.contextMenus.update("sResearchMenu", {
-                "title": `Open ${menuSymbol.toUpperCase()} w/ ${userResearchText}`,
+                "title": `Research ${menuSymbol.toUpperCase()} - ${userResearchText}`,
                 "visible": true  
             });
         }
     }
-};    
-                 
+};  
+
+function updateSResearch2(menuSymbol, userResearchText, selection) {
+    if (userResearchText === "N/A") {
+        chrome.contextMenus.update("sResearchMenu2", {
+            "visible": false
+        });
+    } else {
+        if(selection === "selection") {
+            chrome.contextMenus.update("sResearchMenu2", {
+                "title": `Research ${menuSymbol.toUpperCase()} - ${userResearchText}`,
+                "contexts": ["selection"],
+                "visible": true  
+            });
+        } else {
+            chrome.contextMenus.update("sResearchMenu2", {
+                "title": `Research ${menuSymbol.toUpperCase()}  ${userResearchText}`,
+                "visible": true  
+            });
+        }
+    }
+};
+
+function updateSResearch3(menuSymbol, userResearchText, selection) {
+    if (userResearchText === "N/A") {
+        chrome.contextMenus.update("sResearchMenu3", {
+            "visible": false
+        });
+    } else {
+        if(selection === "selection") {
+            chrome.contextMenus.update("sResearchMenu3", {
+                "title": `Research ${menuSymbol.toUpperCase()} - ${userResearchText}`,
+                "contexts": ["selection"],
+                "visible": true  
+            });
+        } else {
+            chrome.contextMenus.update("sResearchMenu3", {
+                "title": `Research ${menuSymbol.toUpperCase()} - ${userResearchText}`,
+                "visible": true  
+            });
+        }
+    }
+};
+          
+//update crypto research menus
 function updateCResearch(menuSymbol, userCResearchText, selection) {
     if (userCResearchText === "N/A") {
         chrome.contextMenus.update("cResearchMenu", {
@@ -282,19 +562,62 @@ function updateCResearch(menuSymbol, userCResearchText, selection) {
     } else {
         if(selection === "selection") {
             chrome.contextMenus.update("cResearchMenu", {
-                "title": `Open ${menuSymbol.toUpperCase()} w/ ${userCResearchText}`,
+                "title": `Research ${menuSymbol.toUpperCase()} - ${userCResearchText}`,
                 "contexts": ["selection"],
                 "visible": true  
             });
         } else {
             chrome.contextMenus.update("cResearchMenu", {
-                "title": `Open ${menuSymbol.toUpperCase()} w/ ${userCResearchText}`,
+                "title": `Research ${menuSymbol.toUpperCase()} - ${userCResearchText}`,
                 "visible": true  
             });
         }
     }        
 };
 
+function updateCResearch2(menuSymbol, userCResearchText, selection) {
+    if (userCResearchText === "N/A") {
+        chrome.contextMenus.update("cResearchMenu2", {
+            "visible": false
+        });
+    } else {
+        if(selection === "selection") {
+            chrome.contextMenus.update("cResearchMenu2", {
+                "title": `Research ${menuSymbol.toUpperCase()} - ${userCResearchText}`,
+                "contexts": ["selection"],
+                "visible": true  
+            });
+        } else {
+            chrome.contextMenus.update("cResearchMenu2", {
+                "title": `Research ${menuSymbol.toUpperCase()} - ${userCResearchText}`,
+                "visible": true  
+            });
+        }
+    }        
+};
+
+function updateCResearch3(menuSymbol, userCResearchText, selection) {
+    if (userCResearchText === "N/A") {
+        chrome.contextMenus.update("cResearchMenu3", {
+            "visible": false
+        });
+    } else {
+        if(selection === "selection") {
+            chrome.contextMenus.update("cResearchMenu3", {
+                "title": `Research ${menuSymbol.toUpperCase()} - ${userCResearchText}`,
+                "contexts": ["selection"],
+                "visible": true  
+            });
+        } else {
+            chrome.contextMenus.update("cResearchMenu3", {
+                "title": `Research ${menuSymbol.toUpperCase()} - ${userCResearchText}`,
+                "visible": true  
+            });
+        }
+    }        
+};
+
+//update options menus
 function updateOptions(menuSymbol, userOptions, selection) {
     if(userOptions === false) {
         chrome.contextMenus.update("stockOptions", {
@@ -312,40 +635,38 @@ function updateOptions(menuSymbol, userOptions, selection) {
     } else {
         if(selection === "selection") {
             chrome.contextMenus.update("stockOptions", {
-                "title": `Search Options for ${menuSymbol.toUpperCase()} `,
                 "contexts": ["selection"],
                 "visible": true
             });
             chrome.contextMenus.update("sOptionsSite", {
-                "title": `UW Flow - ${menuSymbol.toUpperCase()} `,
+                "title": `UnusualWhales Flow - ${menuSymbol.toUpperCase()} `,
                 "contexts": ["selection"],
                 "visible": true
             });
             chrome.contextMenus.update("sOptionsCalcCall", {
-                "title": `Build Call Option - ${menuSymbol.toUpperCase()} `,
+                "title": `Build ${menuSymbol.toUpperCase()} Call - OptionStrat`,
                 "contexts": ["selection"],
                 "visible": true
             });
             chrome.contextMenus.update("sOptionsCalcPut", {
-                "title": `Build Put Option - ${menuSymbol.toUpperCase()} `,
+                "title": `Build ${menuSymbol.toUpperCase()} Put - OptionStrat `,
                 "contexts": ["selection"],
                 "visible": true
             });
         } else {
             chrome.contextMenus.update("stockOptions", {
-                "title": `Search Options for ${menuSymbol.toUpperCase()} `,
                 "visible": true
             });
             chrome.contextMenus.update("sOptionsSite", {
-                "title": `UW Flow - ${menuSymbol.toUpperCase()} `,
+                "title": `UnusualWhales Flow - ${menuSymbol.toUpperCase()} `,
                 "visible": true
             });
             chrome.contextMenus.update("sOptionsCalcCall", {
-                "title": `Build Call Option - ${menuSymbol.toUpperCase()} `,
+                "title": `Build ${menuSymbol.toUpperCase()} Call - OptionStrat`,
                 "visible": true
             });
             chrome.contextMenus.update("sOptionsCalcPut", {
-                "title": `Build Put Option - ${menuSymbol.toUpperCase()} `,
+                "title": `Build ${menuSymbol.toUpperCase()} Put - OptionStrat`,
                 "visible": true
             });
         }
