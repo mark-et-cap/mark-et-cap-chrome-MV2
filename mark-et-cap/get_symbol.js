@@ -306,6 +306,12 @@ window.addEventListener("focus", function(e) {
 //onload, start looking for domain
 window.onload = function () {
     focusDomainAvailable();
+    if(document.getElementById('tradingview-container') == null) {
+        let wrapper = document.createElement("div");
+        wrapper.id = "tradingview-container";
+        document.body.appendChild(wrapper);
+        wrapper.style.cssText = 'display: none; position: absolute; z-index: 9999: margin:15px';
+    }
 };
 
 
@@ -313,7 +319,58 @@ chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse) {
     let recentDomain = focusDomain;
     if(msg.request =="get_recent_domain") {
         sendResponse({domain: recentDomain});
+    } else if (msg.request =="tradingview_widget"){
+        sendResponse({response: "received"});
+        let tvWidget = document.getElementById('tradingview-container');
+        let tradingViewScript = msg.content;
+        tvWidget.innerHTML += tradingViewScript;
+        enableHoverOver();
     }
 });
+
+/*** TradingView Hover ***/
+
+function renderBubble(mouseX, mouseY) {
+    let iframe = document.getElementById('tradingview-container');
+    setTimeout(function(){
+        iframe.style.display = 'block';
+        iframe.style.top = mouseY + 'px';
+        iframe.style.left = mouseX + 'px';
+        iframe.style.height = '300px';
+        iframe.style.width = '482px';
+    }, 250);
+    document.addEventListener("click", function(e){
+        if(e.target !== iframe) {
+            iframe.style.display = 'none';
+        }
+    })
+}
+
+document.addEventListener('mouseover',function(event) {
+    let hoverOver = event.target;
+    if (hoverOver.tagName !== 'A') { //Ignores non-links
+        return;
+    } else {
+        let hoverHref = hoverOver.href;
+        if (hoverHref.substring(0,32) == "https://twitter.com/search?q=%24") {
+            let TVsymbolOver = hoverHref.split('%24').pop().split('&src')[0];
+            hoverOver.style.display = "inline-block";
+            setTimeout(function(){
+                chrome.runtime.sendMessage({content: TVsymbolOver, message: "get_tradingView_Widget"});        
+                chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse) {
+                    if(msg.request =="tradingview_widget"){
+                        sendResponse({response: "received"});
+                        let tvWidget = document.getElementById('tradingview-container');
+                        let tradingViewScript = msg.content;
+                        tvWidget.innerHTML = '';
+                        tvWidget.innerHTML += tradingViewScript;
+                        renderBubble(event.pageX, event.pageY);
+                    }
+                });
+            }, 250);
+        };
+    };
+});
+
 
 
