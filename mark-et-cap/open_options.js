@@ -24,7 +24,7 @@ function determineOptionsCalcCall() {
     recentInteraction(optionsSymbol);
     let OptionsCalcCallURL = 'https://optionstrat.com/build/long-call/' + optionsSymbol ;
     chrome.tabs.create({ url: OptionsCalcCallURL });
-}
+};
 
 
 function determineOptionsCalcPut() {
