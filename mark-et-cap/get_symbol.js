@@ -338,7 +338,7 @@ function renderBubble(mouseX, mouseY) {
         iframe.style.height = '300px';
         iframe.style.width = '482px';
     }, 250);
-    iframe.addEventListener("click", function(e){
+    document.addEventListener("click", function(e){
         if(e.target !== iframe) {
             iframe.style.display = 'none';
         };
