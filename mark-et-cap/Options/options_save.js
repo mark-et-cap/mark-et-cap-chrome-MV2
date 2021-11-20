@@ -25,6 +25,7 @@ function save_options() {
   let cResearchText3 = document.getElementById('cryptoResearch3').options[document.getElementById('cryptoResearch3').selectedIndex].text;
   let copy = document.getElementById('copy').checked;
   let options = document.getElementById('options').checked;
+  let hoverChart = document.getElementById('hover-chart').checked;
   chrome.storage.sync.set({
     selectedBrokerage: brokerage,
     selectedBrokerageText: brokerageText,
@@ -51,7 +52,8 @@ function save_options() {
     selectedCResearch3: cResearch3,
     selectedCResearchText3: cResearchText3,
     enableCopy: copy,
-    enableOptions: options
+    enableOptions: options, 
+    enableHoverChart: hoverChart
   }, function() {
     let status = document.getElementById('status');
     status.textContent = 'Selections saved successfully';
@@ -77,7 +79,8 @@ function restore_options() {
       selectedCResearch2: 'cresearchN/A',
       selectedCResearch3: 'cresearchN/A',
       enableCopy: true,
-      enableOptions: true
+      enableOptions: true,
+      enableHoverChart: true
   }, function(items) {
     document.getElementById('brokerage').value = items.selectedBrokerage;
     document.getElementById('brokerage2').value = items.selectedBrokerage2;
@@ -92,7 +95,8 @@ function restore_options() {
     document.getElementById('cryptoResearch2').value = items.selectedCResearch2;
     document.getElementById('cryptoResearch3').value = items.selectedCResearch3;
     document.getElementById('copy').checked = items.enableCopy;
-    document.getElementById('options').checked = items.enableOptions; 
+    document.getElementById('options').checked = items.enableOptions;
+    document.getElementById('hover-chart').checked = items.enableHoverChart; 
   });
 };
 
