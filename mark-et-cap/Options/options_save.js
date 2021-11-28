@@ -80,7 +80,7 @@ function restore_options() {
       selectedCResearch3: 'cresearchN/A',
       enableCopy: true,
       enableOptions: true,
-      enableHoverChart: true
+      enableHoverChart: false
   }, function(items) {
     document.getElementById('brokerage').value = items.selectedBrokerage;
     document.getElementById('brokerage2').value = items.selectedBrokerage2;
