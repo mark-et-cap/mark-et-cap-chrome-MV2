@@ -10,6 +10,8 @@ var targetSymbol = new Proxy(symbolOver, {
         }
 });
 
+//tradingview hover timer
+var timer;
 
 //cashtag websites
 let linkList = [
@@ -289,15 +291,11 @@ function unusualWhaleSymbol(hoverHref) {
         let whaleSplit = hoverHref.split('/');
         let symbolOver = whaleSplit[whaleSplit.length -1];
         chrome.runtime.sendMessage({content: symbolOver, message: "get_symbol"});
-        targetSymbol.symbol = symbolOver;
-        targetSymbol.hover = hoverHref;
     } else {
         if (hoverHref.includes("/company/")) {
         let whaleSplit = hoverHref.split('/');
         let symbolOver = whaleSplit[whaleSplit.length -2];
         chrome.runtime.sendMessage({content: symbolOver, message: "get_symbol"});
-        targetSymbol.symbol = symbolOver;
-        targetSymbol.hover = hoverHref;
         }
     }
 };
@@ -432,37 +430,48 @@ function TVHoverOver(event) {
     if (hoverOver.tagName !== 'A') { //Ignores non-links
         return;
     } else {
-        let timer = setTimeout(function(){
-            let TVsymbolOver = symbolOver.symbol
-            let hoverHref = symbolOver.hover;
-            if( hoverHref == hoverOver.href) {
-                hoverOver.style.display = "inline-block";
-                hoverOver.style.cssText = "cursor: progress;";
-                hoverOver.id = "tv-hover";
-                chrome.runtime.sendMessage({content: TVsymbolOver, message: "get_tradingView_Widget"});        
-                chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse) {
-                    if(msg.request == "tradingview_widget"){
-                        sendResponse({response: "received"});
-                        let tvWidget = document.getElementById('tradingview-container');
-                        let tradingViewScript = msg.content;
-                        tvWidget.innerHTML = '';
-                        tvWidget.innerHTML += tradingViewScript;
-                        renderBubble(event.pageX, event.pageY);
-                    }
-                });
-                ['mouseleave', 'contextmenu'].forEach(function(e) {
-                    document.getElementById("tv-hover").addEventListener(e, function(){
-                        clearTimeout(timer);
-                        hoverOver.style.display = "inherit";
-                        return;
-                    });   
-                }); 
-            }
-        }, 1000);    
+        displayTVChart(hoverOver, event);
+        startTimeoutClear(hoverOver, event);
     };
 };
 
+function displayTVChart(hoverOver, event){
+    timer = setTimeout(function(){
+        let TVsymbolOver = symbolOver.symbol;
+        let hoverHref = symbolOver.hover;
+        if( hoverHref == hoverOver.href) {
+            hoverOver.style.display = "inline-block";
+            hoverOver.style.cssText = "cursor: progress;";
+            hoverOver.id = "tv-hover";
+            chrome.runtime.sendMessage({content: TVsymbolOver, message: "get_tradingView_Widget"});        
+            chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse) {
+                if(msg.request == "tradingview_widget"){
+                    sendResponse({response: "received"});
+                    let tvWidget = document.getElementById('tradingview-container');
+                    let tradingViewScript = msg.content;
+                    tvWidget.innerHTML = '';
+                    tvWidget.innerHTML += tradingViewScript;
+                    renderBubble(event.pageX, event.pageY);
+                };
+            });
+        };
+        return true;
+    }, 2000)
+};
 
+function startTimeoutClear(hoverOver, event) {
+    if(document.getElementById("tradingview-container") !== null) {
+        ['mouseleave', 'contextmenu'].forEach(function(e) {
+            hoverOver.addEventListener(e, function(){
+                clearTimeout(timer);
+                hoverOver.style.display = "inherit";
+                hoverOver.removeEventListener
+            }, { once: true });   
+        });
+    } else {
+        return true;
+    }
+};
 
 chrome.storage.onChanged.addListener(function () {
     TVOptionEnabled();
