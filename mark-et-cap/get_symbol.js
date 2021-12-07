@@ -193,26 +193,18 @@ function zacksSymbol(hoverHref) {
         let zacksSplit = hoverHref.split('/')
         let symbolOver = zacksSplit[zacksSplit.length -1];
         chrome.runtime.sendMessage({content: symbolOver, message: "get_symbol"});
-        targetSymbol.symbol = symbolOver;
-        targetSymbol.hover = hoverHref;
     } else {
         if (hoverHref.includes("funds/etf") && hoverHref.includes("profile")) {
             let symbolOver = hoverHref.split('f/').pop().split('/profile')[0].replace(/\W+/g, '');
             chrome.runtime.sendMessage({content: symbolOver, message: "get_symbol"});
-            targetSymbol.symbol = symbolOver;
-            targetSymbol.hover = hoverHref;
         } else if (hoverHref.includes("funds/etf") && hoverHref.includes("etfs-recent_quotes")) {
             let symbolOver = hoverHref.split('f/').pop().split('?art')[0].replace(/\W+/g, '');
             chrome.runtime.sendMessage({content: symbolOver, message: "get_symbol"});
-            targetSymbol.symbol = symbolOver;
-            targetSymbol.hover = hoverHref;
         } else {
             if (hoverHref.includes("funds/etf")) {
                 let zacksSplit = hoverHref.split('/')
                 let symbolOver = zacksSplit[zacksSplit.length -1];
                 chrome.runtime.sendMessage({content: symbolOver, message: "get_symbol"});
-                targetSymbol.symbol = symbolOver;
-                targetSymbol.hover = hoverHref;
             }
         }
     }
@@ -373,7 +365,7 @@ window.onload = function () {
         let wrapper = document.createElement("div");
         wrapper.id = "tradingview-container";
         document.body.appendChild(wrapper);
-        wrapper.style.cssText = 'display: none; position: absolute; z-index: 9999: margin:15px';
+        wrapper.style.cssText = 'display: none; position: absolute; z-index: 9999; margin:15px';
     }
 };
 
@@ -440,7 +432,6 @@ function displayTVChart(hoverOver, event){
         let TVsymbolOver = symbolOver.symbol;
         let hoverHref = symbolOver.hover;
         if( hoverHref == hoverOver.href) {
-            hoverOver.style.display = "inline-block";
             hoverOver.style.cssText = "cursor: progress;";
             hoverOver.id = "tv-hover";
             chrome.runtime.sendMessage({content: TVsymbolOver, message: "get_tradingView_Widget"});        
@@ -464,7 +455,6 @@ function startTimeoutClear(hoverOver, event) {
         ['mouseleave', 'contextmenu'].forEach(function(e) {
             hoverOver.addEventListener(e, function(){
                 clearTimeout(timer);
-                hoverOver.style.display = "inherit";
                 hoverOver.removeEventListener
             }, { once: true });   
         });
