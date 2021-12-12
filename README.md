@@ -13,6 +13,8 @@ Some GIF examples:
 
   [Stocktwits](https://imgur.com/UsNzXZi) 
   
+  [TradingView Hover Chart Feature](https://imgur.com/a/r3HWVKu)
+  
  ## Download the Extension/More Information
   - Website: [https://www.mark-et-cap.com/](https://www.mark-et-cap.com/)
   - Chrome Web Store: [https://chrome.google.com/webstore/detail/mark-et-cap/mopmpokmfchikmphegiccjnbddicaobk/](https://chrome.google.com/webstore/detail/mark-et-cap/mopmpokmfchikmphegiccjnbddicaobk/)
@@ -20,7 +22,7 @@ Some GIF examples:
 
 ## Where we're going
 
-We'd love to gather feedback and build for real-life use cases. Let us know what you'd like to see, what you'd improve on and what's not working. We'd love to intergate with a financial API to give near-realtime price quotes within the browser pop-up menu (to start)!
+We'd love to gather feedback and build for real-life use cases. Let us know what you'd like to see, what you'd improve on and what's not working. 
   
 ### Request new features such as:
   - New supported sites
