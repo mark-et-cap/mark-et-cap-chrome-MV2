@@ -33,6 +33,7 @@ function setDefaultOptions(){
             'selectedCResearchText3': 'N/A',
             'enableCopy': true,
             'enableOptions': true,
+            'enableHoverChart': false, 
             'recentSymbols': recentSymbols,
             'recentSource': recentSource,
             'recentTimeStamp': recentTimeStamp,
