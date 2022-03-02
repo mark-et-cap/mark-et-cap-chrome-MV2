@@ -401,11 +401,11 @@ function renderBubble(mouseX, mouseY) {
     let iframe = document.getElementById('tradingview-container');
     setTimeout(function(){
         chrome.storage.sync.get([
-            "widgetPopupWidth",
-            "widgetPopupHeight"
+            "widgetSettingWidth",
+            "widgetSettingHeight"
         ], function(setting) {
-            let userPopupWidthContainer = setting.widgetPopupWidth;
-            let userPopupHeightContainer = setting.widgetPopupHeight;
+            let userPopupWidthContainer = setting.widgetSettingWidth;
+            let userPopupHeightContainer = setting.widgetSettingHeight;
             iframe.style.display = 'block';
             iframe.style.top = mouseY + 'px';
             iframe.style.left = mouseX + 'px';
