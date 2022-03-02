@@ -400,11 +400,18 @@ chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse) {
 function renderBubble(mouseX, mouseY) {
     let iframe = document.getElementById('tradingview-container');
     setTimeout(function(){
-        iframe.style.display = 'block';
-        iframe.style.top = mouseY + 'px';
-        iframe.style.left = mouseX + 'px';
-        iframe.style.height = '300px';
-        iframe.style.width = '482px';
+        chrome.storage.sync.get([
+            "widgetPopupWidth",
+            "widgetPopupHeight"
+        ], function(setting) {
+            let userPopupWidthContainer = setting.widgetPopupWidth;
+            let userPopupHeightContainer = setting.widgetPopupHeight;
+            iframe.style.display = 'block';
+            iframe.style.top = mouseY + 'px';
+            iframe.style.left = mouseX + 'px';
+            iframe.style.height = userPopupHeightContainer + 'px';
+            iframe.style.width = userPopupWidthContainer + 'px';
+        })
     }, 250);
     ['click', 'contextmenu'].forEach(function(e) {
         document.addEventListener(e, function(e){

@@ -33,12 +33,26 @@ function setDefaultOptions(){
             'selectedCResearchText3': 'N/A',
             'enableCopy': true,
             'enableOptions': true,
-            'enableHoverChart': false, 
+            'enableHoverChart': false,
+            'widgetSettingWidth': 550,
+            'widgetSettingHeight': 375,
+            'widgetSettingInterval': 15 ,
+            'widgetSettingTimezone': 'America/New_York',
+            'widgetSettingTheme': 'light',
+            'widgetSettingBar': 1,
+            'widgetSettingDate': true,
+            'widgetSettingDrawing': true,
+            'widgetSettingDetails': true,
+            'widgetSettingCalendar': false,
+            'widgetSettingPopup': true,
+            'widgetPopupWidth': 1000,
+            'widgetPopupHeight': 650,
             'recentSymbols': recentSymbols,
             'recentSource': recentSource,
             'recentTimeStamp': recentTimeStamp,
             'selectedFavorites': userFavorites,
-            'favoritesTimeStamp': userFavoritesTimeStamp
+            'favoritesTimeStamp': userFavoritesTimeStamp, 
+
         });
     console.log(`Extension Installed: Default User Options Set`);
 

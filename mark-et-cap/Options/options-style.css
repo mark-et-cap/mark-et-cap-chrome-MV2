@@ -1,4 +1,4 @@
-* {
+body {
     background-color: white;
     font-family: "Segoe UI", Candara, "Bitstream Vera Sans", "DejaVu Sans", "Bitstream Vera Sans", "Trebuchet MS", Verdana, "Verdana Ref", sans-serif;
 }
@@ -20,12 +20,22 @@
     width: 325px;
 }
 
-.options-wrapper{
+.options-wrapper,
+.css-number{
     display: table-row;
     margin: 3px;
 }
 
+.css-number{
+    max-width: 100px;
+}
+
 .options-wrapper select{
+    float: right;
+    overflow: hidden;
+}
+
+.options-wrapper input{
     float: right;
     overflow: hidden;
 }
@@ -64,4 +74,13 @@
   
 .tooltip:hover .tooltip-text {
     visibility: visible;
+    
+}#hover-chart:checked ~ #tradingview-widget-settings{
+    display:inherit
+}
+
+#tradingview-widget-settings{
+    background-color: lightgray;
+    display: none;
+    width: 90vw;
 }

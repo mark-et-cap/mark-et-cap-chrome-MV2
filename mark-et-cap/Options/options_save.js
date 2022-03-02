@@ -26,6 +26,19 @@ function save_options() {
   let copy = document.getElementById('copy').checked;
   let options = document.getElementById('options').checked;
   let hoverChart = document.getElementById('hover-chart').checked;
+  let widgetWidth = document.getElementById('widget-width').value;
+  let widgetHeight = document.getElementById('widget-height').value;
+  let widgetInterval = document.getElementById('widget-interval').value;
+  let widgetTimezone = document.getElementById('widget-timezone').value;
+  let widgetTheme = document.getElementById('widget-theme').value;
+  let widgetBar = document.getElementById('widget-bar').value;
+  let widgetDate = document.getElementById('widget-daterange').checked;
+  let widgetDrawing = document.getElementById('widget-drawingtools').checked;
+  let widgetDetails = document.getElementById('widget-details').checked;
+  let widgetCalendar = document.getElementById('widget-calendar').checked;
+  let widgetPopup = document.getElementById('widget-popup').checked;
+  let popupWidth = document.getElementById('popup-width').value;
+  let popupHeight = document.getElementById('popup-height').value;
   chrome.storage.sync.set({
     selectedBrokerage: brokerage,
     selectedBrokerageText: brokerageText,
@@ -53,7 +66,20 @@ function save_options() {
     selectedCResearchText3: cResearchText3,
     enableCopy: copy,
     enableOptions: options, 
-    enableHoverChart: hoverChart
+    enableHoverChart: hoverChart,
+    widgetSettingWidth: widgetWidth,
+    widgetSettingHeight: widgetHeight,
+    widgetSettingInterval: widgetInterval,
+    widgetSettingTimezone: widgetTimezone,
+    widgetSettingTheme: widgetTheme,
+    widgetSettingBar: widgetBar,
+    widgetSettingDate: widgetDate,
+    widgetSettingDrawing: widgetDrawing,
+    widgetSettingDetails: widgetDetails,
+    widgetSettingCalendar: widgetCalendar,
+    widgetSettingPopup: widgetPopup,
+    widgetPopupWidth: popupWidth,
+    widgetPopupHeight: popupHeight
   }, function() {
     let status = document.getElementById('status');
     status.textContent = 'Selections saved successfully';
@@ -80,7 +106,20 @@ function restore_options() {
       selectedCResearch3: 'cresearchN/A',
       enableCopy: true,
       enableOptions: true,
-      enableHoverChart: false
+      enableHoverChart: false, 
+      widgetSettingWidth: 550,
+      widgetSettingHeight: 375,
+      widgetSettingInterval: 15 ,
+      widgetSettingTimezone: 'America/New_York',
+      widgetSettingTheme: 'light',
+      widgetSettingBar : 1,
+      widgetSettingDate: true,
+      widgetSettingDrawing: true,
+      widgetSettingDetails: true,
+      widgetSettingCalendar: false,
+      widgetSettingPopup: true,
+      widgetPopupWidth: 1000,
+      widgetPopupHeight: 650
   }, function(items) {
     document.getElementById('brokerage').value = items.selectedBrokerage;
     document.getElementById('brokerage2').value = items.selectedBrokerage2;
@@ -97,11 +136,24 @@ function restore_options() {
     document.getElementById('copy').checked = items.enableCopy;
     document.getElementById('options').checked = items.enableOptions;
     document.getElementById('hover-chart').checked = items.enableHoverChart; 
+    document.getElementById('widget-width').value = items.widgetSettingWidth;
+    document.getElementById('widget-height').value = items.widgetSettingHeight;
+    document.getElementById('widget-interval').value = items.widgetSettingInterval;
+    document.getElementById('widget-timezone').value = items.widgetSettingTimezone;
+    document.getElementById('widget-theme').value = items.widgetSettingTheme;
+    document.getElementById('widget-bar').value= items.widgetSettingBar; 
+    document.getElementById('widget-daterange').checked = items.widgetSettingDate;
+    document.getElementById('widget-drawingtools').checked = items.widgetSettingDrawing;
+    document.getElementById('widget-details').checked = items.widgetSettingDetails;
+    document.getElementById('widget-calendar').checked = items.widgetSettingCalendar;
+    document.getElementById('widget-popup').checked = items.widgetSettingPopup;
+    document.getElementById('popup-width').value = items.widgetPopupWidth;
+    document.getElementById('popup-height').value = items.widgetPopupHeight;
   });
 };
 
 document.addEventListener('DOMContentLoaded', restore_options);
 
 window.onload = function () {
-      document.getElementById('save').addEventListener('click', save_options);
+  document.getElementById('save').addEventListener('click', save_options);
 };
