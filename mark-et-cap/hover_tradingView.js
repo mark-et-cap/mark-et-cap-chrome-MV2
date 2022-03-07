@@ -5,7 +5,6 @@ chrome.runtime.onMessage.addListener(
         if(request.message == "get_tradingView_Widget") {
             tradingViewWidgetsymbol = request.content;
             getNewWidget(tradingViewWidgetsymbol);
-            console.log("hellooooooo");
         } 
     }
 );
