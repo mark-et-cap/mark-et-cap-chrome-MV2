@@ -35,6 +35,16 @@ let cryptoUrls = [
 
 //creates copy, stock brokerage and crypto exchange context menu items
 let createAllMenus = () => {
+
+    //create chart parent menu
+    chrome.contextMenus.create({
+        "id": "chartMenu", 
+        "title": "Open Chart", 
+        "contexts": ["link"],
+        "onclick": requestChartWidget,
+        "targetUrlPatterns": [].concat(stockUrls, cryptoUrls)
+    })
+
     //create the copy context menu 
     chrome.contextMenus.create({
         "id": 'copyMenu',
