@@ -15,7 +15,6 @@ chrome.runtime.onMessage.addListener(
         let copyText = document.createElement('input');
         document.body.appendChild(copyText);
         copyText.value = copySymbolvar;
-        console.log(copySymbolvar);
         copyText.select();
         document.execCommand('copy'); 
         document.body.removeChild(copyText);
