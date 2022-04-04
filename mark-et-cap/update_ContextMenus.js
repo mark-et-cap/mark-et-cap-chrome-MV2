@@ -211,14 +211,16 @@ chrome.runtime.onMessage.addListener(
                     updateCResearch3(menuSymbol, userCResearchText3);
                 }      
             });
-            chrome.storage.sync.get(["enableOptions"], function(options) {
-                userOptions = options.enableOptions;
-                if (userOptions === false) {
+            chrome.storage.sync.get([
+                "selectedOptionsText"
+            ], function(options) {
+                userOptionsText = options.selectedOptionsText;
+                if (userOptionsText === "N/A") {
                     chrome.contextMenus.update("stockOptions", {
                         "visible": false
                     });
                 } else {
-                    updateOptions(menuSymbol, userOptions); 
+                    updateOptions(menuSymbol, userOptionsText); 
                 }
             });
             chrome.contextMenus.update("searchAll", {
@@ -307,14 +309,16 @@ chrome.runtime.onMessage.addListener(
                     updateCResearch3(menuSymbol, userCResearchText3, "selection");
                 }      
             });
-            chrome.storage.sync.get(["enableOptions"], function(options) {
-                userOptions = options.enableOptions;
-                if (userOptions === false) {
+            chrome.storage.sync.get([
+                "selectedOptionsText"
+            ], function(options) {
+                userOptionsText = options.selectedOptionsText;
+                if (userOptionsText === "N/A") {
                     chrome.contextMenus.update("stockOptions", {
                         "visible": false
                     });
                 } else {
-                    updateOptions(menuSymbol, userOptions, "selection"); 
+                    updateOptions(menuSymbol, userOptionsText, "selection"); 
                 }
             });
             chrome.contextMenus.update("searchAll", { 
@@ -659,7 +663,7 @@ function updateCResearch3(menuSymbol, userCResearchText, selection) {
 
 //update options menus
 function updateOptions(menuSymbol, userOptions, selection) {
-    if(userOptions === false) {
+    if(userOptions === "N/A") {
         chrome.contextMenus.update("stockOptions", {
             "visible": false
         });
@@ -679,7 +683,7 @@ function updateOptions(menuSymbol, userOptions, selection) {
                 "visible": true
             });
             chrome.contextMenus.update("sOptionsSite", {
-                "title": `UnusualWhales Flow - ${menuSymbol.toUpperCase()} `,
+                "title": `View ${menuSymbol.toUpperCase()} Options - ${userOptions}`,
                 "contexts": ["selection"],
                 "visible": true
             });
@@ -698,7 +702,7 @@ function updateOptions(menuSymbol, userOptions, selection) {
                 "visible": true
             });
             chrome.contextMenus.update("sOptionsSite", {
-                "title": `UnusualWhales Flow - ${menuSymbol.toUpperCase()} `,
+                "title": `View ${menuSymbol.toUpperCase()} Options - ${userOptions}`,
                 "visible": true
             });
             chrome.contextMenus.update("sOptionsCalcCall", {
