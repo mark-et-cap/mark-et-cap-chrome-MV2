@@ -7,8 +7,8 @@ let userFavoritesTimeStamp = [];
 //sets default option, user will not see errors when using for first time. 
 function setDefaultOptions(){
     chrome.storage.sync.set({
-            'selectedBrokerage': 'robinhood',
-            'selectedBrokerageText': 'Robinhood',
+            'selectedBrokerage': 'allyinvest',
+            'selectedBrokerageText': 'Ally Invest',
             'selectedBrokerage2': 'stockN/A',
             'selectedBrokerageText2': 'N/A',
             'selectedBrokerage3': 'stockN/A',
@@ -31,9 +31,10 @@ function setDefaultOptions(){
             'selectedCResearchText2': 'N/A',
             'selectedCResearch3': 'cresearchN/A',
             'selectedCResearchText3': 'N/A',
-            'enableCopy': true,
-            'enableOptions': true,
-            'enableHoverChart': false,
+            'enableCopy': false,
+            'selectedOptions': 'optN/A',
+            'selectedOptionsText': 'N/A', 
+            'enableHoverChart': true,
             'widgetSettingWidth': 550,
             'widgetSettingHeight': 375,
             'widgetSettingInterval': 15 ,

@@ -12,25 +12,31 @@ function determineCResearch() {
     chrome.storage.sync.get(["selectedCResearch"], function(obj) {
         userCResearch = obj.selectedCResearch;
         switch (userCResearch){
-            case 'ctwitter': cresearchTwitter();
+            case 'coindesk':  researchCoinDesk();
                 break;
-            case 'cryptonews': researchCryptoNews();
+            case 'coingecko':  researchCoinGecko();
                 break;
-            case 'coingecko': researchCoinGecko();
-                break; 
-            case 'coindesk': researchCoinDesk();
+            case 'coinmarketcap':  researchCoinMarketCap();
                 break;
-            case 'cyahoofinance': researchCYahoo();
+            case 'cryptonews':  researchCryptoNews();
                 break;
-            case 'coinmarketcap': researchCoinMarketCap();
+            case 'cryptopanic': researchCryptoPanic();
                 break;
-            case 'blockfolio': researchBlockfolio();
+            case 'defipulse':  researchDefiPulse();
                 break;
-            case 'creddit': researchCReddit();
+            case 'glassnode': researchGlassNode();
                 break;
-            case 'defipulse': researchDefiPulse();
+            case 'lunarcrush': researchLunarCrush();
                 break;
-            case 'ctradingview': cresearchTradingView();
+            case 'messari': researchMessari();
+                break;
+            case 'creddit':  researchCReddit();
+                break;
+            case 'ctradingview':  cresearchTradingView();
+                break;
+            case 'ctwitter':  cresearchTwitter();
+                break;
+            case 'cyahoofinance':  researchCYahoo();
                 break;
         };
     });
@@ -40,25 +46,31 @@ function determineCResearch2() {
     chrome.storage.sync.get(["selectedCResearch2"], function(obj) {
         userCResearch = obj.selectedCResearch2;
         switch (userCResearch){
-            case 'ctwitter': cresearchTwitter();
+            case 'coindesk':  researchCoinDesk();
                 break;
-            case 'cryptonews': researchCryptoNews();
+            case 'coingecko':  researchCoinGecko();
                 break;
-            case 'coingecko': researchCoinGecko();
-                break; 
-            case 'coindesk': researchCoinDesk();
+            case 'coinmarketcap':  researchCoinMarketCap();
                 break;
-            case 'cyahoofinance': researchCYahoo();
+            case 'cryptonews':  researchCryptoNews();
                 break;
-            case 'coinmarketcap': researchCoinMarketCap();
+            case 'cryptopanic': researchCryptoPanic();
                 break;
-            case 'blockfolio': researchBlockfolio();
+            case 'defipulse':  researchDefiPulse();
                 break;
-            case 'creddit': researchCReddit();
+            case 'glassnode': researchGlassNode();
                 break;
-            case 'defipulse': researchDefiPulse();
+            case 'lunarcrush': researchLunarCrush();
                 break;
-            case 'ctradingview': cresearchTradingView();
+            case 'messari': researchMessari();
+                break;
+            case 'creddit':  researchCReddit();
+                break;
+            case 'ctradingview':  cresearchTradingView();
+                break;
+            case 'ctwitter':  cresearchTwitter();
+                break;
+            case 'cyahoofinance':  researchCYahoo();
                 break;
         };
     });
@@ -68,56 +80,56 @@ function determineCResearch3() {
     chrome.storage.sync.get(["selectedCResearch3"], function(obj) {
         userCResearch = obj.selectedCResearch3;
         switch (userCResearch){
-            case 'ctwitter': cresearchTwitter();
+            case 'coindesk':  researchCoinDesk();
                 break;
-            case 'cryptonews': researchCryptoNews();
+            case 'coingecko':  researchCoinGecko();
                 break;
-            case 'coingecko': researchCoinGecko();
-                break; 
-            case 'coindesk': researchCoinDesk();
+            case 'coinmarketcap':  researchCoinMarketCap();
                 break;
-            case 'cyahoofinance': researchCYahoo();
+            case 'cryptonews':  researchCryptoNews();
                 break;
-            case 'coinmarketcap': researchCoinMarketCap();
+            case 'cryptopanic': researchCryptoPanic();
                 break;
-            case 'blockfolio': researchBlockfolio();
+            case 'defipulse':  researchDefiPulse();
                 break;
-            case 'creddit': researchCReddit();
+            case 'glassnode': researchGlassNode();
                 break;
-            case 'defipulse': researchDefiPulse();
+            case 'lunarcrush': researchLunarCrush();
                 break;
-            case 'ctradingview': cresearchTradingView();
+            case 'messari': researchMessari();
+                break;
+            case 'creddit':  researchCReddit();
+                break;
+            case 'ctradingview':  cresearchTradingView();
+                break;
+            case 'ctwitter':  cresearchTwitter();
+                break;
+            case 'cyahoofinance':  researchCYahoo();
                 break;
         };
     });
 };
+
 //** UPDATE BELOW w/ function name/address, cryptoResearch symbol, etc **
 //order of the recentInteraction function matters, messaging from recent_Symbol.js to get_Symbol.js
 //using chrome.tabs.query (where tab[0].id is where the message will be sent) if the new tab is created
 //as part of the below functions, the focusDomain is lost
-
-function cresearchTwitter() {
-    recentInteraction(cryptoResearch);
-    let cTwitter = 'https://twitter.com/search?q=%24' + cryptoResearch + '&src=cashtag_click';
-    chrome.tabs.create({ url: cTwitter });
-};
-
-function researchCryptoNews() {
+function researchCoinDesk() {
     recentInteraction(cryptoResearch);
     firebaseDB.child("crypto").child(cryptoSymbol.toUpperCase()).once('value').then(function(snapshot) {
         if(snapshot.exists()) {
             let cryptoObj = snapshot.val();
             let cryptoTranslation = cryptoObj.ticker_url_translation;
             if (cryptoTranslation !== "") {
-                let cCryptoNews = 'https://cryptonews.com/coins/' + cryptoTranslation + '/';
-                chrome.tabs.create({ url: cCryptoNews });
+                let cCoinDesk = 'https://www.coindesk.com/price/' + cryptoTranslation;
+                chrome.tabs.create({ url: cCoinDesk });
             } else {
-                let cCryptoNews = 'https://cryptonews.com/coins/' + cryptoResearch + '/';
-                chrome.tabs.create({ url: cCryptoNews });
+                let cCoinDesk = 'https://www.coindesk.com/price/' + cryptoResearch;
+                chrome.tabs.create({ url: cCoinDesk });
             }
         } else {
-            let cCryptoNews = 'https://cryptonews.com/coins/' + cryptoResearch + '/';
-            chrome.tabs.create({ url: cCryptoNews });
+            let cCoinDesk = 'https://www.coindesk.com/price/' + cryptoResearch;
+            chrome.tabs.create({ url: cCoinDesk });
         }
     });
 };
@@ -142,32 +154,6 @@ function researchCoinGecko() {
     });
 };
 
-function researchCoinDesk() {
-    recentInteraction(cryptoResearch);
-    firebaseDB.child("crypto").child(cryptoSymbol.toUpperCase()).once('value').then(function(snapshot) {
-        if(snapshot.exists()) {
-            let cryptoObj = snapshot.val();
-            let cryptoTranslation = cryptoObj.ticker_url_translation;
-            if (cryptoTranslation !== "") {
-                let cCoinDesk = 'https://www.coindesk.com/price/' + cryptoTranslation;
-                chrome.tabs.create({ url: cCoinDesk });
-            } else {
-                let cCoinDesk = 'https://www.coindesk.com/price/' + cryptoResearch;
-                chrome.tabs.create({ url: cCoinDesk });
-            }
-        } else {
-            let cCoinDesk = 'https://www.coindesk.com/price/' + cryptoResearch;
-            chrome.tabs.create({ url: cCoinDesk });
-        }
-    });
-};
-
-function researchCYahoo() {
-    recentInteraction(cryptoResearch);
-    let cYahoo = 'https://finance.yahoo.com/quote/' + cryptoResearch + '-USD/';
-    chrome.tabs.create({ url: cYahoo });
-};
-
 function researchCoinMarketCap() {
     recentInteraction(cryptoResearch);
     firebaseDB.child("crypto").child(cryptoSymbol.toUpperCase()).once('value').then(function(snapshot) {
@@ -188,16 +174,30 @@ function researchCoinMarketCap() {
     });
 };
 
-function researchBlockfolio() {
+function researchCryptoNews() {
     recentInteraction(cryptoResearch);
-    let cBlockfolio = 'https://blockfolio.com/coin/' + cryptoResearch;
-    chrome.tabs.create({ url: cBlockfolio });
+    firebaseDB.child("crypto").child(cryptoSymbol.toUpperCase()).once('value').then(function(snapshot) {
+        if(snapshot.exists()) {
+            let cryptoObj = snapshot.val();
+            let cryptoTranslation = cryptoObj.ticker_url_translation;
+            if (cryptoTranslation !== "") {
+                let cCryptoNews = 'https://cryptonews.com/coins/' + cryptoTranslation + '/';
+                chrome.tabs.create({ url: cCryptoNews });
+            } else {
+                let cCryptoNews = 'https://cryptonews.com/coins/' + cryptoResearch + '/';
+                chrome.tabs.create({ url: cCryptoNews });
+            }
+        } else {
+            let cCryptoNews = 'https://cryptonews.com/coins/' + cryptoResearch + '/';
+            chrome.tabs.create({ url: cCryptoNews });
+        }
+    });
 };
 
-function researchCReddit() {
+function researchCryptoPanic() {
     recentInteraction(cryptoResearch);
-    let cReddit = 'https://www.reddit.com/search/?q=%24' + cryptoResearch;
-    chrome.tabs.create({ url: cReddit });
+    let cCryptoPanic = 'https://cryptopanic.com/news/' + cryptoResearch ;
+    chrome.tabs.create({ url: cCryptoPanic });
 };
 
 function researchDefiPulse() {
@@ -207,21 +207,85 @@ function researchDefiPulse() {
             let cryptoObj = snapshot.val();
             let cryptoTranslation = cryptoObj.ticker_url_translation;
             if (cryptoTranslation !== "") {
-                let cDefiPulse = 'https://defipulse.com/' + cryptoTranslation;
+                let cDefiPulse = 'https://defipulse.com/projects/' + cryptoTranslation;
                 chrome.tabs.create({ url: cDefiPulse });
             } else {
-                let cDefiPulse = 'https://defipulse.com/' + cryptoResearch;
+                let cDefiPulse = 'https://defipulse.com/projects/' + cryptoResearch.toLocaleLowerCase();
                 chrome.tabs.create({ url: cDefiPulse });
             }
         } else {
-            let cDefiPulse = 'https://defipulse.com/' + cryptoResearch;
+            let cDefiPulse = 'https://defipulse.com/projects/' + cryptoResearch.toLocaleLowerCase();
             chrome.tabs.create({ url: cDefiPulse });
         }
     });
+};
+
+function researchGlassNode() {
+    recentInteraction(cryptoResearch);
+    let cGlassNode = 'https://studio.glassnode.com/metrics?a=' + cryptoResearch;
+    chrome.tabs.create({ url: cGlassNode });
+};
+
+function researchLunarCrush() {
+    recentInteraction(cryptoResearch);
+    firebaseDB.child("crypto").child(cryptoSymbol.toUpperCase()).once('value').then(function(snapshot) {
+        if(snapshot.exists()) {
+            let cryptoObj = snapshot.val();
+            let cryptoTranslation = cryptoObj.ticker_url_translation;
+            if (cryptoTranslation !== "") {
+                let cLunarCrush = 'https://lunarcrush.com/coins/' + cryptoResearch + '/' + cryptoTranslation;
+                chrome.tabs.create({ url: cLunarCrush });
+            } else {
+                let cLunarCrush = 'https://lunarcrush.com/coins/' + cryptoResearch;
+                chrome.tabs.create({ url: cLunarCrush });
+            }
+        } else {
+            let cLunarCrush = 'https://lunarcrush.com/coins/' + cryptoResearch;
+            chrome.tabs.create({ url: cLunarCrush });
+        }
+    });
+};
+
+function researchMessari() {
+    recentInteraction(cryptoResearch);
+    firebaseDB.child("crypto").child(cryptoSymbol.toUpperCase()).once('value').then(function(snapshot) {
+        if(snapshot.exists()) {
+            let cryptoObj = snapshot.val();
+            let cryptoTranslation = cryptoObj.ticker_url_translation;
+            if (cryptoTranslation !== "") {
+                let cMessari  = 'https://messari.io/asset/' + cryptoTranslation;
+                chrome.tabs.create({ url: cMessari });
+            } else {
+                let cMessari = 'https://messari.io/asset/' + cryptoTranslation;
+                chrome.tabs.create({ url: cMessari });
+            }
+        } else {
+            let cMessari = 'https://messari.io/asset/' + cryptoResearch;
+            chrome.tabs.create({ url: cMessari });
+        }
+    });
+};
+
+function researchCReddit() {
+    recentInteraction(cryptoResearch);
+    let cReddit = 'https://www.reddit.com/search/?q=%24' + cryptoResearch;
+    chrome.tabs.create({ url: cReddit });
 };
 
 function cresearchTradingView() {
     recentInteraction(cryptoResearch);
     let cTradingView = 'https://www.tradingview.com/symbols/CRYPTOCAP-' + cryptoResearch;
     chrome.tabs.create({ url: cTradingView });
+};
+
+function cresearchTwitter() {
+    recentInteraction(cryptoResearch);
+    let cTwitter = 'https://twitter.com/search?q=%24' + cryptoResearch + '&src=cashtag_click';
+    chrome.tabs.create({ url: cTwitter });
+};
+
+function researchCYahoo() {
+    recentInteraction(cryptoResearch);
+    let cYahoo = 'https://finance.yahoo.com/quote/' + cryptoResearch + '-USD/';
+    chrome.tabs.create({ url: cYahoo });
 };

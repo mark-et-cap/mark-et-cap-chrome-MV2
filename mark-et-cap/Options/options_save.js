@@ -24,7 +24,8 @@ function save_options() {
   let cResearch3 = document.getElementById('cryptoResearch3').value;
   let cResearchText3 = document.getElementById('cryptoResearch3').options[document.getElementById('cryptoResearch3').selectedIndex].text;
   let copy = document.getElementById('copy').checked;
-  let options = document.getElementById('options').checked;
+  let options = document.getElementById('optionsSearch').value;
+  let optionsText = document.getElementById('optionsSearch').options[document.getElementById('optionsSearch').selectedIndex].text;
   let hoverChart = document.getElementById('hover-chart').checked;
   let widgetWidth = document.getElementById('widget-width').value;
   let widgetHeight = document.getElementById('widget-height').value;
@@ -65,7 +66,8 @@ function save_options() {
     selectedCResearch3: cResearch3,
     selectedCResearchText3: cResearchText3,
     enableCopy: copy,
-    enableOptions: options, 
+    selectedOptions: options,
+    selectedOptionsText: optionsText, 
     enableHoverChart: hoverChart,
     widgetSettingWidth: widgetWidth,
     widgetSettingHeight: widgetHeight,
@@ -92,7 +94,7 @@ function save_options() {
 
 function restore_options() {
   chrome.storage.sync.get({
-      selectedBrokerage: 'robinhood',
+      selectedBrokerage: 'allyinvest',
       selectedBrokerage2: 'stockN/A',
       selectedBrokerage3: 'stockN/A',
       selectedExchange: 'binance',
@@ -104,9 +106,9 @@ function restore_options() {
       selectedCResearch: 'cresearchN/A',
       selectedCResearch2: 'cresearchN/A',
       selectedCResearch3: 'cresearchN/A',
-      enableCopy: true,
-      enableOptions: true,
-      enableHoverChart: false, 
+      enableCopy: false,
+      selectedOptions: 'optN/A',
+      enableHoverChart: true, 
       widgetSettingWidth: 550,
       widgetSettingHeight: 375,
       widgetSettingInterval: 15 ,
@@ -134,7 +136,7 @@ function restore_options() {
     document.getElementById('cryptoResearch2').value = items.selectedCResearch2;
     document.getElementById('cryptoResearch3').value = items.selectedCResearch3;
     document.getElementById('copy').checked = items.enableCopy;
-    document.getElementById('options').checked = items.enableOptions;
+    document.getElementById('optionsSearch').value = items.selectedOptions;
     document.getElementById('hover-chart').checked = items.enableHoverChart; 
     document.getElementById('widget-width').value = items.widgetSettingWidth;
     document.getElementById('widget-height').value = items.widgetSettingHeight;

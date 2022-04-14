@@ -12,31 +12,41 @@ function determineSResearch() {
     chrome.storage.sync.get(["selectedSResearch"], function(obj) {
         userResearch = obj.selectedSResearch;
         switch (userResearch){
-            case 'stwitter': researchTwitter();
+            case 'barchart':  researchBarchart();
                 break;
-            case 'marketwatch': researchMarketWatch();
+            case 'benzinga':  researchBenzinga();
                 break;
-            case 'barchart': researchBarchart();
+            case 'cmlviz': researchCML();
                 break;
-            case 'motleyfool': researchMotley();
+            case 'edgar': researchEdgar();
                 break;
-            case 'yahoofinance': researchYahoo();
+            case 'finviz':  researchfinviz();
                 break;
-            case 'zackscom': researchZacks();
+            case 'marketwatch':  researchMarketWatch();
                 break;
-            case 'finviz': researchfinviz();
+            case 'nasdaq': researchNasdaq();
                 break;
-            case 'sreddit': researchReddit();
+            case 'nyse': researchNYSE();
                 break;
-            case 'swaggystocks': researchSwaggy();
+            case 'otc': researchOTC();
                 break;
-            case 'benzinga': researchBenzinga();
+            case 'sreddit':  researchReddit();
                 break;
-            case 'stocktwits': researchStocktwits();
+            case 'stocktwits':  researchStocktwits();
                 break;
-            case 'tradingview': researchTradingView();
+            case 'swaggystocks':  researchSwaggy();
                 break;
-            case 'unusualwhales': researchUnusualWhales();
+            case 'motleyfool':  researchMotley();
+                break;
+            case 'tradingview':  researchTradingView();
+                break;
+            case 'stwitter':  researchTwitter();
+                break;
+            case 'unusualwhales':  researchUnusualWhales();
+                break;
+            case 'yahoofinance':  researchYahoo();
+                break;
+            case 'zackscom':  researchZacks();
                 break;
         };
     });
@@ -46,31 +56,41 @@ function determineSResearch2() {
     chrome.storage.sync.get(["selectedSResearch2"], function(obj) {
         userResearch = obj.selectedSResearch2;
         switch (userResearch){
-            case 'stwitter': researchTwitter();
+            case 'barchart':  researchBarchart();
                 break;
-            case 'marketwatch': researchMarketWatch();
+            case 'benzinga':  researchBenzinga();
                 break;
-            case 'barchart': researchBarchart();
+            case 'cmlviz': researchCML();
                 break;
-            case 'motleyfool': researchMotley();
+            case 'edgar': researchEdgar();
                 break;
-            case 'yahoofinance': researchYahoo();
+            case 'finviz':  researchfinviz();
                 break;
-            case 'zackscom': researchZacks();
+            case 'marketwatch':  researchMarketWatch();
                 break;
-            case 'finviz': researchfinviz();
+            case 'nasdaq': researchNasdaq();
                 break;
-            case 'sreddit': researchReddit();
+            case 'nyse': researchNYSE();
                 break;
-            case 'swaggystocks': researchSwaggy();
+            case 'otc': researchOTC();
                 break;
-            case 'benzinga': researchBenzinga();
+            case 'sreddit':  researchReddit();
                 break;
-            case 'stocktwits': researchStocktwits();
+            case 'stocktwits':  researchStocktwits();
                 break;
-            case 'tradingview': researchTradingView();
+            case 'swaggystocks':  researchSwaggy();
                 break;
-            case 'unusualwhales': researchUnusualWhales();
+            case 'motleyfool':  researchMotley();
+                break;
+            case 'tradingview':  researchTradingView();
+                break;
+            case 'stwitter':  researchTwitter();
+                break;
+            case 'unusualwhales':  researchUnusualWhales();
+                break;
+            case 'yahoofinance':  researchYahoo();
+                break;
+            case 'zackscom':  researchZacks();
                 break;
         };
     });
@@ -80,31 +100,41 @@ function determineSResearch3() {
     chrome.storage.sync.get(["selectedSResearch3"], function(obj) {
         userResearch = obj.selectedSResearch3;
         switch (userResearch){
-            case 'stwitter': researchTwitter();
+            case 'barchart':  researchBarchart();
                 break;
-            case 'marketwatch': researchMarketWatch();
+            case 'benzinga':  researchBenzinga();
                 break;
-            case 'barchart': researchBarchart();
+            case 'cmlviz': researchCML();
                 break;
-            case 'motleyfool': researchMotley();
+            case 'edgar': researchEdgar();
                 break;
-            case 'yahoofinance': researchYahoo();
+            case 'finviz':  researchfinviz();
                 break;
-            case 'zackscom': researchZacks();
+            case 'marketwatch':  researchMarketWatch();
                 break;
-            case 'finviz': researchfinviz();
+            case 'nasdaq': researchNasdaq();
                 break;
-            case 'sreddit': researchReddit();
+            case 'nyse': researchNYSE();
                 break;
-            case 'swaggystocks': researchSwaggy();
+            case 'otc': researchOTC();
                 break;
-            case 'benzinga': researchBenzinga();
+            case 'sreddit':  researchReddit();
                 break;
-            case 'stocktwits': researchStocktwits();
+            case 'stocktwits':  researchStocktwits();
                 break;
-            case 'tradingview': researchTradingView();
+            case 'swaggystocks':  researchSwaggy();
                 break;
-            case 'unusualwhales': researchUnusualWhales();
+            case 'motleyfool':  researchMotley();
+                break;
+            case 'tradingview':  researchTradingView();
+                break;
+            case 'stwitter':  researchTwitter();
+                break;
+            case 'unusualwhales':  researchUnusualWhales();
+                break;
+            case 'yahoofinance':  researchYahoo();
+                break;
+            case 'zackscom':  researchZacks();
                 break;
         };
     });
@@ -115,10 +145,34 @@ function determineSResearch3() {
 //using chrome.tabs.query (where tab[0].id is where the message will be sent) if the new tab is created
 //as part of the below functions, the focusDomain is lost
 
-function researchTwitter() {
+function researchBarchart() {
     recentInteraction(stockResearch);
-    let rTwitter = 'https://twitter.com/search?q=%24' + stockResearch + '&src=cashtag_click';
-    chrome.tabs.create({ url: rTwitter });
+    let rBarchart = 'https://www.barchart.com/stocks/quotes/' + stockResearch;
+    chrome.tabs.create({ url: rBarchart });
+};
+
+function researchBenzinga() {
+    recentInteraction(stockResearch);
+    let rBenzinga = 'https://www.benzinga.com/stock/' + stockResearch;
+    chrome.tabs.create({ url: rBenzinga});
+};
+
+function researchCML() {
+    recentInteraction(stockResearch);
+    let rCML = 'https://www.cmlviz.com/stocks/' + stockResearch;
+    chrome.tabs.create({ url: rCML });
+};
+
+function researchEdgar() {
+    recentInteraction(stockResearch);
+    let rEdgar = 'https://www.sec.gov/edgar/search/#/entityName=' + stockResearch;
+    chrome.tabs.create({ url: rEdgar });
+};
+
+function researchfinviz() {
+    recentInteraction(stockResearch);
+    let rFinviz = 'https://finviz.com/quote.ashx?t=' + stockResearch;
+    chrome.tabs.create({ url: rFinviz });
 };
 
 function researchMarketWatch() {
@@ -127,10 +181,40 @@ function researchMarketWatch() {
     chrome.tabs.create({ url: rMarketWatch });
 };
 
-function researchBarchart() {
+function researchNasdaq() {
     recentInteraction(stockResearch);
-    let rBarchart = 'https://www.barchart.com/stocks/quotes/' + stockResearch;
-    chrome.tabs.create({ url: rBarchart });
+    let rNasdaq = 'https://www.nasdaq.com/market-activity/stocks/' + stockResearch;
+    chrome.tabs.create({ url: rNasdaq });
+};
+
+function researchNYSE() {
+    recentInteraction(stockResearch);
+    let rNYSE = 'https://www.nyse.com/quote/' + stockResearch.toUpperCase();
+    chrome.tabs.create({ url: rNYSE });
+};
+
+function researchOTC() {
+    recentInteraction(stockResearch);
+    let rOTC = 'https://www.otcmarkets.com/stock/' + stockResearch.toUpperCase() + '/overview';
+    chrome.tabs.create({ url: rOTC });
+};
+
+function researchReddit() {
+    recentInteraction(stockResearch);
+    let rReddit = 'https://www.reddit.com/r/MillennialBets/wiki/index/stocks/' + stockResearch;
+    chrome.tabs.create({ url: rReddit });
+};
+
+function researchStocktwits() {
+    recentInteraction(stockResearch);
+    let rStocktwits = 'https://stocktwits.com/symbol/' + stockResearch;
+    chrome.tabs.create({ url: rStocktwits });
+};
+
+function researchSwaggy() {
+    recentInteraction(stockResearch);
+    let rSwaggy = 'https://swaggystocks.com/dashboard/stocks/' + stockResearch;
+    chrome.tabs.create({ url: rSwaggy });
 };
 
 function researchMotley() {
@@ -148,6 +232,24 @@ function researchMotley() {
     });
 };
 
+function researchTradingView() {
+    recentInteraction(stockResearch);
+    let rTradingView = 'https://www.tradingview.com/symbols/' + stockResearch;
+    chrome.tabs.create({ url: rTradingView });
+};
+
+function researchTwitter() {
+    recentInteraction(stockResearch);
+    let rTwitter = 'https://twitter.com/search?q=%24' + stockResearch + '&src=cashtag_click';
+    chrome.tabs.create({ url: rTwitter });
+};
+
+function researchUnusualWhales() {
+    recentInteraction(stockResearch);
+    let rUnusualWhales = 'https://unusualwhales.com/company/' + stockResearch + '/alerts';
+    chrome.tabs.create({ url: rUnusualWhales });
+};
+
 function researchYahoo() {
     recentInteraction(stockResearch);
     let rYahoo = 'https://finance.yahoo.com/quote/' + stockResearch;
@@ -160,44 +262,18 @@ function researchZacks() {
     chrome.tabs.create({ url: rZacks });
 };
 
-function researchfinviz() {
-    recentInteraction(stockResearch);
-    let rFinviz = 'https://finviz.com/quote.ashx?t=' + stockResearch;
-    chrome.tabs.create({ url: rFinviz });
-};
 
-function researchReddit() {
-    recentInteraction(stockResearch);
-    let rReddit = 'https://www.reddit.com/r/MillennialBets/wiki/index/stocks/' + stockResearch;
-    chrome.tabs.create({ url: rReddit });
-};
 
-function researchSwaggy() {
-    recentInteraction(stockResearch);
-    let rSwaggy = 'https://swaggystocks.com/dashboard/stocks/' + stockResearch;
-    chrome.tabs.create({ url: rSwaggy });
-};
 
-function researchBenzinga() {
-    recentInteraction(stockResearch);
-    let rBenzinga = 'https://www.benzinga.com/stock/' + stockResearch;
-    chrome.tabs.create({ url: rBenzinga});
-};
+
+
+
+
+
+
+
  
-function researchStocktwits() {
-    recentInteraction(stockResearch);
-    let rStocktwits = 'https://stocktwits.com/symbol/' + stockResearch;
-    chrome.tabs.create({ url: rStocktwits });
-};
 
-function researchTradingView() {
-    recentInteraction(stockResearch);
-    let rTradingView = 'https://www.tradingview.com/symbols/' + stockResearch;
-    chrome.tabs.create({ url: rTradingView });
-};
 
-function researchUnusualWhales() {
-    recentInteraction(stockResearch);
-    let rUnusualWhales = 'https://unusualwhales.com/company/' + stockResearch + '/alerts';
-    chrome.tabs.create({ url: rUnusualWhales });
-};
+
+

@@ -22,6 +22,46 @@ function switchBrokerage(userPopupBrokerage) {
         case "stockN/A":
             popupBrokerage('','',"N/A");
                 break;
+
+        case "allyinvest": 
+            const allyinvestURL = 'https://live.invest.ally.com/research/stocks/';
+            const allyinvestSuffix = '/overview';
+            popupBrokerage(allyinvestURL, allyinvestSuffix, "Ally Invest");
+                break;
+        case 'charlesschwab':
+            const charlesURL = 'https://www.schwab.com/public/schwab/investing/investment_help/investment_research/stock_research/stocks.html?path=/research/public/stocks/summary/?symbol=';
+            popupBrokerage(charlesURL, '', "Charles Schwab");
+                break;
+        case 'etrade': 
+            const etradeURL = 'https://www.etrade.wallst.com/v1/stocks/snapshot/snapshot.asp?ChallengeUrl=https://idp.etrade.com/idp/SSO.saml2&reinitiate-handshake=0&prospectnavyear=2011&AuthnContext=prospect&env=PRD&symbol=';
+            popupBrokerage(etradeURL, '', "Etrade");    
+                break;
+        case 'fidelity':
+            const fidelityURL = 'https://snapshot.fidelity.com/fidresearch/snapshot/landing.jhtml#/research?symbol=';
+            popupBrokerage(fidelityURL, '', "Fidelity");
+                break;
+        case 'firstrade':
+            const firtradeURL = 'https://www.firstrade.com/content/en-us/researchtools/research?ticker=';
+            popupBrokerage(firtradeURL, '', "Firstrade");
+                break;
+        case 'merrilledge': 
+            const merrillURL = 'https://www.merrilledge.com/M/cse/TM/Pages/SearchResults.aspx?k=';
+            const merrillSuffix = '&tab=global&filter=all';
+            popupBrokerage(merrillURL, merrillSuffix, "Merrill Edge")
+                break;
+        case 'moomoo':
+            const moomooURL = 'https://www.moomoo.com/stock/';
+            const moomooSuffix = '-US';
+            popupBrokerage(moomooURL, moomooSuffix, "moomoo");
+                break;
+        case 'passfolio':
+            const passfolioURL = 'https://web.passfolio.com/app/discover/stock/';
+            popupBrokerage(passfolioURL, '', "Passfolio");
+                break;
+        case 'public':
+            const publicURL = 'https://public.com/stocks/';
+            popupBrokerage(publicURL, '', "Public");
+                break;
         case "robinhood": 
             const robinhoodURL = 'https://robinhood.com/stocks/';
             popupBrokerage(robinhoodURL, '', "Robinhood");
@@ -29,32 +69,23 @@ function switchBrokerage(userPopupBrokerage) {
         case 'sofi': 
             const sofiURL = 'https://www.sofi.com/wealth/app/stock/';
             popupBrokerage(sofiURL, '', "Sofi");
-            break;
-        case 'webull': 
-            const webullURL = 'https://www.webull.com/quote/';
-            popupBrokerage(webullURL, '', "Webull");
                 break;
         case 'tdameritrade': 
             const tdaURL = 'https://invest.ameritrade.com/grid/p/site#r=jPage/https://research.ameritrade.com/grid/wwws/research/stocks/summary?c_name=invest_VENDOR&symbol=';
             popupBrokerage(tdaURL, '', "TDAmeritrade");
                 break;
-        case 'etrade': 
-            const etradeURL = 'https://www.etrade.wallst.com/v1/stocks/snapshot/snapshot.asp?ChallengeUrl=https://idp.etrade.com/idp/SSO.saml2&reinitiate-handshake=0&prospectnavyear=2011&AuthnContext=prospect&env=PRD&symbol=';
-            popupBrokerage(etradeURL, '', "Etrade");    
+        case 'tradestation':
+            const tradestationURL = 'https://www.tradestation.com/research/stocks/';
+            popupBrokerage(tradestationURL, '', "TradeStation");
                 break;
-        case 'charlesschwab':
-            const charlesURL = 'https://www.schwab.com/public/schwab/investing/investment_help/investment_research/stock_research/stocks.html?path=/research/public/stocks/summary/?symbol=';
-            popupBrokerage(charlesURL, '', "Charles Schwab");
+        case 'vanguard':
+            const vanguardURL = 'https://personal.vanguard.com/us/secfunds/stocks/snapshot?Ticker=';
+            popupBrokerage(vanguardURL, '', "Vanguard");
                 break;
-        case 'merrilledge': 
-            const merrillURL = 'https://www.merrilledge.com/M/cse/TM/Pages/SearchResults.aspx?k=';
-            const merrillSuffix = '&tab=global&filter=all';
-            popupBrokerage(merrillURL, merrillSuffix, "Merrill Edge")
+        case 'webull': 
+            const webullURL = 'https://www.webull.com/quote/';
+            popupBrokerage(webullURL, '', "Webull");
                 break;
-        case 'fidelity':
-            const fidelityURL = 'https://snapshot.fidelity.com/fidresearch/snapshot/landing.jhtml#/research?symbol=';
-            popupBrokerage(fidelityURL, '', "Fidelity");
-             break;
     }
 };
 
@@ -68,35 +99,32 @@ function switchExchange(userPopupExchange) {
             const binanceSuffix = '_USDT'
             popupExchange(binanceURL, binanceSuffix, "Binance");
                 break;
-        case 'coinbase':
-            const coinbaseURL = 'https://www.coinbase.com/price/';
-            popupExchange(coinbaseURL, '', "Coinbase");
+        case 'bitfinex': 
+            const bitfinexURL = 'https://www.bitfinex.com/t/';
+            const bitfinexSuffix = ':USD';
+            popupExchange(bitfinexURL, bitfinexSuffix, "Bitfinex");
+                break; 
+        case 'bittrex':
+            const bittrexURL = 'https://bittrex.com/Market/Index?MarketName=USD-';
+            popupExchange(bittrexURL, '', "Bittrex");
                 break;
-        case 'gemini':
-            const geminiURL = 'https://www.gemini.com/prices/';
-            popupExchange(geminiURL, '', "Gemini"); 
-                break;
-        case 'robinhoodcrypto': 
-            const rhCryptoURL = 'https://robinhood.com/crypto/';
-            popupExchange(rhCryptoURL, '', "RobinhoodCrypto");
+        case 'blockfi':
+            const blockfiURL = 'https://app.blockfi.com/accounts/wallet/';
+            popupExchange(blockfiURL, '', "BlockFi");
                 break;
         case 'cex':
             const cexURL = 'https://cex.io/';
             const cexSuffix = '-usd';
             popupExchange(cexURL, cexSuffix, "Cex");
                 break;
-        case 'bitfinex': 
-            const bitfinexURL = 'https://www.bitfinex.com/t/';
-            const bitfinexSuffix = ':USD';
-            popupExchange(bitfinexURL, bitfinexSuffix, "Bitfinex");
+        case 'coinbase':
+            const coinbaseURL = 'https://www.coinbase.com/price/';
+            popupExchange(coinbaseURL, '', "Coinbase");
                 break;
-        case 'bittrex':
-            const bittrexURL = 'https://bittrex.com/Market/Index?MarketName=USD-';
-            popupExchange(bittrexURL, '', "Bittrex");
-                break;
-        case 'kraken':
-            const krakenURL = 'https://www.kraken.com/en-us/prices/';
-            popupExchange(krakenURL, '', "Kraken");
+        case 'coinbasepro':
+            const coinbaseproURL = 'https://pro.coinbase.com/trade/';
+            const coinbaseproSuffix = '-USD';
+            popupExchange(coinbaseproURL, coinbaseproSuffix, "CoinbasePro");
                 break;
         case 'cryptocom': 
             const cryptocomURL = 'https://crypto.com/exchange/trade/spot/';
@@ -107,6 +135,48 @@ function switchExchange(userPopupExchange) {
             const etoroURL  = 'https://www.etoro.com/markets/';
             popupExchange(etoroURL, '', "eToro");
                 break;
+        case 'ftx':
+            const ftxURL = 'https://ftx.us/trade/';
+            const ftxSuffix = '/USD';
+            popupExchange(ftxURL, ftxSuffix, "FTX");
+                break;
+        case 'gemini':
+            const geminiURL = 'https://www.gemini.com/prices/';
+            popupExchange(geminiURL, '', "Gemini"); 
+                break;
+        case 'kraken':
+            const krakenURL = 'https://www.kraken.com/en-us/prices/';
+            popupExchange(krakenURL, '', "Kraken");
+                break;
+        case 'okcoin':
+            const okcoinURL =  'https://www.okcoin.com/prices/';
+            const  okcoinSuffix = '-price-chart';
+            popupExchange(okcoinURL, okcoinSuffix, "okcoin");
+                break; 
+        case 'passfoliocrypto':
+            const passfoliocryptoURL = 'https://web.passfolio.com/app/discover/crypto/';
+            popupExchange(passfoliocryptoURL, '', "PassfolioCrypto");
+                break;
+        case 'publiccrypto':
+            const publiccryptoURL = 'https://public.com/crypto/';
+            popupExchange(publiccryptoURL, '', "PublicCrypto");
+                break;
+        case 'robinhoodcrypto': 
+            const rhCryptoURL = 'https://robinhood.com/crypto/';
+            popupExchange(rhCryptoURL, '', "RobinhoodCrypto");
+                break;
+        case 'soficrypto': //<ticker>
+            const soficryptoURL = 'https://www.sofi.com/wealth/app/crypto/';
+            popupExchange(soficryptoURL, '', "SoFiCrypto");
+                break;
+        case 'uphold':
+            const upholdURL = 'https://uphold.com/en-us/assets/crypto/buy-';
+            popupExchange(upholdURL, '', "uphold");
+                break;
+        case 'webullcrypto': 
+            const webullcryptoURL = 'https://www.webull.com/cryptocurrency/';
+            popupExchange(webullcryptoURL, '', "WebullCrypto");
+                break;
     }
 };
 
@@ -115,22 +185,72 @@ function switchSResearch(userPopupSResearch) {
         case 'sresearchN/A':
             popupSResearch('','',"N/A");
                 break;
-        case 'stwitter': 
-            const rTwitter = 'https://twitter.com/search?q=%24';
-            const rTwitterSuffix = '&src=cashtag_click';
-            popupSResearch(rTwitter, rTwitterSuffix, "Twitter");
+        case 'barchart': 
+            const rBarchart = 'https://www.barchart.com/stocks/quotes/';
+            popupSResearch(rBarchart, '', "Barchart");
+                break;
+        case 'benzinga':
+            const rBenzinga = 'https://www.benzinga.com/quote/';
+            popupSResearch(rBenzinga, '', "Benzinga");
+                break;
+        case 'cmlviz': 
+            const rcmlviz = 'https://www.cmlviz.com/stocks/';
+            popupSResearch(rcmlviz, '', "CML");
+                break;
+        case 'edgar': //
+            const redgar = 'https://www.sec.gov/edgar/search/#/entityName=';
+            popupSResearch(redgar, '', "Edgar");
+                break;
+        case 'finviz': 
+            const rFinviz = 'https://finviz.com/quote.ashx?t=';
+            popupSResearch(rFinviz, '', "Finviz");
                 break;
         case 'marketwatch': 
             const rMarketWatch = 'https://www.marketwatch.com/investing/stock/';
             popupSResearch(rMarketWatch, '', "MarketWatch");
                 break;
-        case 'barchart': 
-            const rBarchart = 'https://www.barchart.com/stocks/quotes/';
-            popupSResearch(rBarchart, '', "Barchart");
+        case 'nasdaq':
+            const rNasdaq = 'https://www.nasdaq.com/market-activity/stocks/';
+            popupSResearch(rNasdaq, '', "Nasdaq");
+                break;
+        case 'nyse': 
+            const rNYSE = 'https://www.nyse.com/quote/';
+            popupSResearch(rNYSE, '', "NYSE");
+                break;
+        case 'otc': 
+            const rOTC = 'https://www.otcmarkets.com/stock/';
+            const rOTCSuffix = '/overview';
+            popupSResearch(rOTC, rOTCSuffix, "OTC Markets");
+                break;
+        case 'sreddit': 
+            const rReddit = 'https://www.reddit.com/r/MillennialBets/wiki/index/stocks/';
+            popupSResearch(rReddit, '', "Reddit");
+                break;
+        case 'stocktwits': 
+            const rStocktwits = 'https://stocktwits.com/symbol/';
+            popupSResearch(rStocktwits, '', "Stocktwits");
+                break;
+        case 'swaggystocks':
+            const rSwaggy = 'https://swaggystocks.com/dashboard/stocks/';
+            popupSResearch(rSwaggy, '', "SwaggyStocks");
                 break;
         //handled in the firebase call to get exchange info
         case 'motleyfool':
             popupSResearch('', '', "MotleyFool");
+                break;
+        case 'tradingview':
+            const rTradingView = 'https://www.tradingview.com/symbols/';
+            popupSResearch(rTradingView, '', "TradingView");
+                break;
+        case 'stwitter': 
+            const rTwitter = 'https://twitter.com/search?q=%24';
+            const rTwitterSuffix = '&src=cashtag_click';
+            popupSResearch(rTwitter, rTwitterSuffix, "Twitter");
+                break;
+        case 'unusualwhales':
+            const rUnusualWhales = 'https://unusualwhales.com/company/';
+            const rUWSuffix = '/alerts'
+            popupSResearch(rUnusualWhales, rUWSuffix, "Unusual Whales");
                 break;
         case 'yahoofinance': 
             const rYahoo = 'https://finance.yahoo.com/quote/';
@@ -140,35 +260,6 @@ function switchSResearch(userPopupSResearch) {
             const rZacks = 'https://www.zacks.com/stock/quote/';
             popupSResearch(rZacks, '', "Zacks");
                 break;
-        case 'finviz': 
-            const rFinviz = 'https://finviz.com/quote.ashx?t=';
-            popupSResearch(rFinviz, '', "Finviz");
-                break;
-        case 'sreddit': 
-            const rReddit = 'https://www.reddit.com/r/MillennialBets/wiki/index/stocks/';
-            popupSResearch(rReddit, '', "Reddit");
-                break;
-        case 'benzinga':
-             const rBenzinga = 'https://www.benzinga.com/quote/';
-             popupSResearch(rBenzinga, '', "Benzinga");
-                break;
-        case 'swaggystocks':
-            const rSwaggy = 'https://swaggystocks.com/dashboard/stocks/';
-            popupSResearch(rSwaggy, '', "SwaggyStocks");
-                break;
-        case 'stocktwits': 
-            const rStocktwits = 'https://stocktwits.com/symbol/';
-            popupSResearch(rStocktwits, '', "Stocktwits");
-                break;
-        case 'tradingview':
-            const rTradingView = 'https://www.tradingview.com/symbols/';
-            popupSResearch(rTradingView, '', "TradingView");
-                break;
-        case 'unusualwhales':
-            const rUnusualWhales = 'https://unusualwhales.com/company/';
-            const rUWSuffix = '/alerts'
-            popupSResearch(rUnusualWhales, rUWSuffix, "Unusual Whales");
-                break;
     }
 };
 
@@ -177,48 +268,60 @@ function switchCResearch(userPopupCResearch) {
         case 'cresearchN/A':
             popupCResearch('', '', "N/A");
                 break;
-        case 'ctwitter': 
-            const cTwitter = 'https://twitter.com/search?q=%24';
-            const cTwitterSuffix = '&src=cashtag_click';
-            popupCResearch(cTwitter, cTwitterSuffix, "Twitter");
+        case 'coindesk':
+            const cCoinDesk = 'https://www.coindesk.com/price/';
+            popupCResearch(cCoinDesk, '', "Coindesk");
+                break;
+        case 'coingecko':
+            const cCoinGecko = 'https://www.coingecko.com/en/coins/';
+            popupCResearch(cCoinGecko, '', "CoinGecko");
+                break; 
+        case 'coinmarketcap': 
+            const cCoinMarketCap = 'https://coinmarketcap.com/currencies/';
+            popupCResearch(cCoinMarketCap, '', "CoinMarketCap");
                 break;
         case 'cryptonews': 
             const cCryptoNews = 'https://cryptonews.com/coins/';
             const cCryptoNewsSuffix = '/';
             popupCResearch(cCryptoNews, cCryptoNewsSuffix, "CryptoNews");
                 break;
-        case 'coingecko':
-            const cCoinGecko = 'https://www.coingecko.com/en/coins/';
-            popupCResearch(cCoinGecko, '', "CoinGecko");
-                break; 
-        case 'coindesk':
-            const cCoinDesk = 'https://www.coindesk.com/price/';
-            popupCResearch(cCoinDesk, '', "Coindesk");
+        case 'cryptopanic': 
+            const ccryptopanic = 'https://cryptopanic.com/news/';
+            popupCResearch(ccryptopanic, '', "CryptoPanic");
+                break;           
+        case 'defipulse':
+            const cDefiPulse = 'https://defipulse.com/';
+            popupCResearch(cDefiPulse, '', "DefiPulse");        
                 break;
-        case 'cyahoofinance': 
-            const cYahoo = 'https://finance.yahoo.com/quote/';
-            const cYahooSuffix = '-USD/';
-            popupCResearch(cYahoo, cYahooSuffix, "Yahoo(Crypto)");
+        case 'glassnode': 
+            const cglassnode = 'https://studio.glassnode.com/metrics?a=';
+            popupCResearch(cglassnode, '', "GlassNode");        
                 break;
-        case 'coinmarketcap': 
-            const cCoinMarketCap = 'https://coinmarketcap.com/currencies/';
-            popupCResearch(cCoinMarketCap, '', "CoinMarketCap");
+        case 'lunarcrush': 
+            const clunarcrush = 'https://lunarcrush.com/coins/';
+            popupCResearch(clunarcrush, '', "LunarCrush");        
                 break;
-        case 'blockfolio': 
-            const cBlockfolio = 'https://blockfolio.com/coin/';
-            popupCResearch(cBlockfolio, '', "Blockfolio");
+        case 'messari': //https://messari.io/asset/<longname>
+            const cmessari = 'https://messari.io/asset/';
+            popupCResearch(cmessari, '', "Messari");        
                 break;
         case 'creddit': 
             const cReddit = 'https://www.reddit.com/search/?q=%24';
             popupCResearch(cReddit, '', "Reddit");
                 break;
-        case 'defipulse':
-            const cDefiPulse = 'https://defipulse.com/';
-            popupCResearch(cDefiPulse, '', "DefiPulse");        
-                break;
-       case 'ctradingview':
+        case 'ctradingview':
             const cTradingView = 'https://www.tradingview.com/symbols/CRYPTOCAP-';
             popupCResearch(cTradingView, '', "TradingView");
+                break;
+        case 'ctwitter': 
+            const cTwitter = 'https://twitter.com/search?q=%24';
+            const cTwitterSuffix = '&src=cashtag_click';
+            popupCResearch(cTwitter, cTwitterSuffix, "Twitter");
+                break;
+        case 'cyahoofinance': 
+            const cYahoo = 'https://finance.yahoo.com/quote/';
+            const cYahooSuffix = '-USD/';
+            popupCResearch(cYahoo, cYahooSuffix, "Yahoo(Crypto)");
                 break;
     }
 };
@@ -295,7 +398,7 @@ function popupBrokerage(brokerageURL, URLsuffix, source) {
         };
     };
 };
-
+ 
 function popupExchange(exchangeURL, URLsuffix, source) {
     popupExchangeFavorites(exchangeURL, URLsuffix, source);
     let allCryptoId = document.querySelectorAll('a[id$="-ticker"]');
@@ -308,7 +411,7 @@ function popupExchange(exchangeURL, URLsuffix, source) {
             });  
         } else {
             exchangeActionMenu[i].addEventListener("click", function(e){
-                if(source == "Kraken" || source == "Coinbase" || source == "Gemini") {
+                if(source == "Kraken" || source == "Coinbase" || source == "Gemini" || source == "okcoin" || source == "WebullCrypto") {
                     chrome.runtime.sendMessage({content: thisCryptoSymbol.toUpperCase(), message: "find_crypto_translation"}, function(response) {
                         let dbTranslation = response.dbResponse;
                         if (dbTranslation !== ""){
@@ -325,6 +428,11 @@ function popupExchange(exchangeURL, URLsuffix, source) {
                                     chrome.tabs.create({ url: krakenURL });
                                     return false;
                                 }
+                            } else if(source == "okcoin") {
+                                let okcoinURL =  'https://www.okcoin.com/prices/' + dbTranslation + '-' + thisCryptoSymbol + URLsuffix;
+                                setFavoriteTimeStamp(thisCryptoSymbol);
+                                chrome.tabs.create({ url: okcoinURL });
+                                return false;
                             } else {
                                 let thisExchangeURL = exchangeURL + dbTranslation
                                 setFavoriteTimeStamp(thisCryptoSymbol);
@@ -333,6 +441,10 @@ function popupExchange(exchangeURL, URLsuffix, source) {
                             }
                         }
                     });
+                } else if(source == "BlockFi" || source == "uphold") {
+                    thisExchangeURL = exchangeURL + thisCryptoSymbol.toLowerCase();
+                    setFavoriteTimeStamp(thisCryptoSymbol);
+                    chrome.tabs.create({ url: thisExchangeURL});
                 } else if(URLsuffix == null || URLsuffix == '') {
                     thisExchangeURL = exchangeURL + thisCryptoSymbol;
                     setFavoriteTimeStamp(thisCryptoSymbol);
@@ -398,10 +510,18 @@ function popupCResearch(cResearchURL, URLsuffix, source) {
             });  
         } else {
             cResearchActionMenu[i].addEventListener("click", function(e) {
-                if(source == "CryptoNews" || source == "CoinGecko" || source == "Coindesk" || source == "CoinMarketCap" || source == "DefiPulse") {
+                if(source == "CryptoNews" || source == "CoinGecko" || source == "Coindesk" || source == "CoinMarketCap" || source == "DefiPulse" || source == "Messari") {
                     chrome.runtime.sendMessage({content: thisCResearchSymbol.toUpperCase(), message: "find_research_translation"}, function(response) {
                         let dbTranslation = response.dbResponse;
                         let thisCResearchURL = cResearchURL + dbTranslation;
+                        setFavoriteTimeStamp(thisCResearchSymbol);
+                        chrome.tabs.create({ url: thisCResearchURL});
+                        return false;
+                    });
+                } else if (source == "LunarCrush") {
+                    chrome.runtime.sendMessage({content: thisCResearchSymbol.toUpperCase(), message: "find_research_translation"}, function(response) {
+                        let dbTranslation = response.dbResponse;
+                        thisCResearchURL = cResearchURL + thisCResearchSymbol + '/' + dbTranslation;
                         setFavoriteTimeStamp(thisCResearchSymbol);
                         chrome.tabs.create({ url: thisCResearchURL});
                         return false;
@@ -507,7 +627,7 @@ function popupExchangeFavorites(exchangeURL, URLsuffix, source) {
             });  
         } else {
             exchangeActionMenu[i+15].addEventListener("click", function(e){
-                if(source == "Kraken" || source == "Coinbase" || source == "Gemini") {
+                if(source == "Kraken" || source == "Coinbase" || source == "Gemini" || source == "okcoin" || source == "WebullCrypto") {
                     chrome.runtime.sendMessage({content: thisCryptoSymbol.toUpperCase(), message: "find_crypto_translation"}, function(response) {
                         let dbTranslation = response.dbResponse;
                         if (dbTranslation !== ""){
@@ -524,6 +644,11 @@ function popupExchangeFavorites(exchangeURL, URLsuffix, source) {
                                     chrome.tabs.create({ url: krakenURL });
                                     return false;
                                 }
+                            } else if(source == "okcoin") {
+                                let okcoinURL =  'https://www.okcoin.com/prices/' + dbTranslation + '-' + thisCryptoSymbol + URLsuffix;
+                                setFavoriteTimeStamp(thisCryptoSymbol);
+                                chrome.tabs.create({ url: okcoinURL });
+                                return false;
                             } else {
                                 let thisExchangeURL = exchangeURL + dbTranslation
                                 setFavoriteTimeStamp(thisCryptoSymbol);
@@ -532,6 +657,10 @@ function popupExchangeFavorites(exchangeURL, URLsuffix, source) {
                             }
                         }
                     });
+                } else if(source == "BlockFi" || source == "uphold") {
+                    thisExchangeURL = exchangeURL + thisCryptoSymbol.toLowerCase();
+                    setFavoriteTimeStamp(thisCryptoSymbol);
+                    chrome.tabs.create({ url: thisExchangeURL});
                 } else if(URLsuffix == null || URLsuffix == '') {
                     thisExchangeURL = exchangeURL + thisCryptoSymbol;
                     setFavoriteTimeStamp(thisCryptoSymbol);
@@ -602,6 +731,14 @@ function popupCResearchFavorites(cResearchURL, URLsuffix, source) {
                         chrome.tabs.create({ url: thisCResearchURL});
                         return false;
                     });
+                } else if (source == "LunarCrush") {
+                    chrome.runtime.sendMessage({content: thisCResearchSymbol.toUpperCase(), message: "find_research_translation"}, function(response) {
+                        let dbTranslation = response.dbResponse;
+                        thisCResearchURL = cResearchURL + thisCResearchSymbol + '/' + dbTranslation;
+                        setFavoriteTimeStamp(thisCResearchSymbol);
+                        chrome.tabs.create({ url: thisCResearchURL});
+                        return false;
+                    });   
                 } else if (URLsuffix == null || URLsuffix == '') {
                     thisCResearchURL = cResearchURL + thisCResearchSymbol;
                     setFavoriteTimeStamp(thisCResearchSymbol);
