@@ -375,6 +375,7 @@ let stocktwits = document.getElementsByClassName('stocktwits')[0];
 let swaggystocks = document.getElementsByClassName('swaggystocks')[0];
 let motleyfool = document.getElementsByClassName('motleyfool')[0];
 let tradingview = document.getElementsByClassName('tradingview')[0];
+let trendspider = document.getElementsByClassName('trendspider')[0];
 let twitter = document.getElementsByClassName('stwitter')[0];
 let unusualwhales = document.getElementsByClassName('unusualwhales')[0];  
 let yahoofinance = document.getElementsByClassName('yahoofinance')[0];
@@ -466,6 +467,12 @@ tradingview.addEventListener("click",  function() {
     chrome.tabs.create({url: tradingviewURL + searchTicker});
 }); 
 
+trendspider.addEventListener("click",  function() {
+    let trendspiderURL = 'https://charts.trendspider.com/?symbol=';
+    let searchTicker = tickerSearchBar.value.toString().replace(/\W+/g, '');
+    chrome.tabs.create({url: trendspiderURL + searchTicker});
+}); 
+
 twitter.addEventListener("click",  function() {
     let twitterURL = 'https://twitter.com/search?q=%24'; 
     let searchTicker = tickerSearchBar.value.toString().replace(/\W+/g, '');
@@ -503,6 +510,7 @@ let lunarcrush = document.getElementsByClassName('lunarcrush')[0];
 let messari = document.getElementsByClassName('messari')[0];
 let creddit = document.getElementsByClassName('creddit')[0];
 let ctradingview = document.getElementsByClassName('ctradingview')[0];
+let ctrendspider = document.getElementsByClassName('ctrendspider')[0];
 let cTwitter = document.getElementsByClassName('ctwitter')[0];
 let cyahoofinance = document.getElementsByClassName('cyahoofinance')[0];
 
@@ -599,6 +607,13 @@ ctradingview.addEventListener("click",  function() {
     let searchTicker = tickerSearchBar.value.toString().replace(/\W+/g, '');
     chrome.tabs.create({url: ctradingviewURL + searchTicker});
 });
+
+ctrendspider.addEventListener("click",  function() {
+    let ctrendspiderURL = 'https://charts.trendspider.com/?symbol=%5E';
+    let searchTicker = tickerSearchBar.value.toString().replace(/\W+/g, '');
+    chrome.tabs.create({url: ctrendspiderURL + searchTicker + 'USD'});
+});
+
 
 cTwitter.addEventListener("click",  function() {
     let cTwitterURL = 'https://twitter.com/search?q=%24';

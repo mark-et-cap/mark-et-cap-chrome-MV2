@@ -31,7 +31,6 @@ let linkList = [
     "www.coindesk.com",
     "cryptonews.com",
     "blockfolio.com"
-    
 ];
 
 function getUserFocusDomain(focusDomain) { 

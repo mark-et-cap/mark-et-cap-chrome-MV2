@@ -40,6 +40,8 @@ function determineSResearch() {
                 break;
             case 'tradingview':  researchTradingView();
                 break;
+            case 'trendspider':  researchTrendSpider();
+                break;
             case 'stwitter':  researchTwitter();
                 break;
             case 'unusualwhales':  researchUnusualWhales();
@@ -84,6 +86,8 @@ function determineSResearch2() {
                 break;
             case 'tradingview':  researchTradingView();
                 break;
+            case 'trendspider':  researchTrendSpider();
+                break;
             case 'stwitter':  researchTwitter();
                 break;
             case 'unusualwhales':  researchUnusualWhales();
@@ -127,6 +131,8 @@ function determineSResearch3() {
             case 'motleyfool':  researchMotley();
                 break;
             case 'tradingview':  researchTradingView();
+                break;
+            case 'trendspider':  researchTrendSpider();
                 break;
             case 'stwitter':  researchTwitter();
                 break;
@@ -236,6 +242,12 @@ function researchTradingView() {
     recentInteraction(stockResearch);
     let rTradingView = 'https://www.tradingview.com/symbols/' + stockResearch;
     chrome.tabs.create({ url: rTradingView });
+};
+
+function researchTrendSpider() {
+    recentInteraction(stockResearch);
+    let rTrendSpider = 'https://charts.trendspider.com/?symbol=' + stockResearch;
+    chrome.tabs.create({ url: rTrendSpider });
 };
 
 function researchTwitter() {

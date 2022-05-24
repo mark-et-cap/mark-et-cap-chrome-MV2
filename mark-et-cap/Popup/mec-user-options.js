@@ -22,7 +22,6 @@ function switchBrokerage(userPopupBrokerage) {
         case "stockN/A":
             popupBrokerage('','',"N/A");
                 break;
-
         case "allyinvest": 
             const allyinvestURL = 'https://live.invest.ally.com/research/stocks/';
             const allyinvestSuffix = '/overview';
@@ -242,6 +241,10 @@ function switchSResearch(userPopupSResearch) {
             const rTradingView = 'https://www.tradingview.com/symbols/';
             popupSResearch(rTradingView, '', "TradingView");
                 break;
+        case 'trendspider':
+            const rTrendSpider = 'https://charts.trendspider.com/?symbol=';
+            popupSResearch(rTrendSpider, '', "TrendSpider");
+                break;        
         case 'stwitter': 
             const rTwitter = 'https://twitter.com/search?q=%24';
             const rTwitterSuffix = '&src=cashtag_click';
@@ -301,7 +304,7 @@ function switchCResearch(userPopupCResearch) {
             const clunarcrush = 'https://lunarcrush.com/coins/';
             popupCResearch(clunarcrush, '', "LunarCrush");        
                 break;
-        case 'messari': //https://messari.io/asset/<longname>
+        case 'messari': 
             const cmessari = 'https://messari.io/asset/';
             popupCResearch(cmessari, '', "Messari");        
                 break;
@@ -312,6 +315,11 @@ function switchCResearch(userPopupCResearch) {
         case 'ctradingview':
             const cTradingView = 'https://www.tradingview.com/symbols/CRYPTOCAP-';
             popupCResearch(cTradingView, '', "TradingView");
+                break;
+        case 'ctrendspider':
+            const cTrendSpider = 'https://charts.trendspider.com/?symbol=%5E';
+            const cTrendSpiderSuffix = 'USD';
+            popupCResearch(cTrendSpider, cTrendSpiderSuffix, "TrendSpider");
                 break;
         case 'ctwitter': 
             const cTwitter = 'https://twitter.com/search?q=%24';
