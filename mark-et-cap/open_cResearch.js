@@ -34,6 +34,8 @@ function determineCResearch() {
                 break;
             case 'ctradingview':  cresearchTradingView();
                 break;
+            case 'ctrendspider':  cresearchTrendSpider();
+                break;
             case 'ctwitter':  cresearchTwitter();
                 break;
             case 'cyahoofinance':  researchCYahoo();
@@ -68,6 +70,8 @@ function determineCResearch2() {
                 break;
             case 'ctradingview':  cresearchTradingView();
                 break;
+            case 'ctrendspider':  cresearchTrendSpider();
+                break;
             case 'ctwitter':  cresearchTwitter();
                 break;
             case 'cyahoofinance':  researchCYahoo();
@@ -101,6 +105,8 @@ function determineCResearch3() {
             case 'creddit':  researchCReddit();
                 break;
             case 'ctradingview':  cresearchTradingView();
+                break;
+            case 'ctrendspider':  cresearchTrendSpider();
                 break;
             case 'ctwitter':  cresearchTwitter();
                 break;
@@ -276,6 +282,12 @@ function cresearchTradingView() {
     recentInteraction(cryptoResearch);
     let cTradingView = 'https://www.tradingview.com/symbols/CRYPTOCAP-' + cryptoResearch;
     chrome.tabs.create({ url: cTradingView });
+};
+
+function cresearchTrendSpider() {
+    recentInteraction(cryptoResearch);
+    let cTrendSpider = 'https://charts.trendspider.com/?symbol=%5E' + cryptoResearch + 'USD';
+    chrome.tabs.create({ url: cTrendSpider });
 };
 
 function cresearchTwitter() {
