@@ -1,12 +1,12 @@
 const app = firebase.initializeApp({
-    apiKey: "AIzaSyCSTr2zVJXzCPypFlqBY8MU34zbSaTBoUU",
-    authDomain: "mark-et-cap.firebaseapp.com",
-    databaseURL: "https://mark-et-cap-default-rtdb.firebaseio.com",
-    projectId: "mark-et-cap",
-    storageBucket: "mark-et-cap.appspot.com",
-    messagingSenderId: "559535551754",
-    appId: "1:559535551754:web:43cbcb121e8d1bb15cb6f3",
-    measurementId: "G-K1WCZVSTWH"
+    apiKey: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+    authDomain: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXxx",
+    databaseURL: "XXXXXXXXXXXXXXXXXXXXXXXx",
+    projectId: "XXXXXXXXXXXXXXXxx",
+    storageBucket: "XXXXXXXXXXXXXXXX",
+    messagingSenderId: "XXXXXXXXXXXXXXXXx",
+    appId: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+    measurementId: "XXXXXXXXX"
 });
 
 const firebaseDB = app.database().ref();
